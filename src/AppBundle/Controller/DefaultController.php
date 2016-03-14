@@ -6,7 +6,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Solarium\QueryType\Select\Query\FilterQuery;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -26,7 +25,7 @@ class DefaultController extends Controller
 
         // replace this example code with whatever you need
         return $this->render('search/index.html.twig', array(
-            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
+            'base_dir' => realpath($this->container->getParameter('kernel.root_dir') . '/..'),
         ));
     }
 
@@ -43,7 +42,7 @@ class DefaultController extends Controller
 
         $searchTerm = 'lemma:' . $request->get('q') . '*';
 
-        $paginator  = $this->get('knp_paginator');
+        $paginator = $this->get('knp_paginator');
 
         // todo move into config
         $rows = 20;
@@ -64,20 +63,15 @@ class DefaultController extends Controller
         $query->addFilterQuery($fq);
 
         $pagination = $paginator->paginate(
-             [$this->client, $query],
+            [$this->client, $query],
             $currentPage,
             $rows
-         );
-
-
-        // $results = new LengthAwarePaginator($resultset->getDocuments(), $resultset->getNumFound(), $rows, null, ['path' => 'search']);
+        );
 
         return $this->render('search/results.html.twig', [
             'searchTerm' => $request->get('q'),
             'results' => $pagination,
-            //'firstItem' => $results->firstItem(),
-
-                ]);
+        ]);
 
     }
 
