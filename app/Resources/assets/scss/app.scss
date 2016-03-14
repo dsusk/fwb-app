@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css?family=Cardo:400,400italic');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic');
+
+$font-family-serif: 'Cardo', serif;
+$font-family-sans-serif: 'Open Sans', sans-serif;
+$brand-primary: #c90230;
+
+$enable-flex: true;
+$navbar-default-bg: $brand-primary;
+$navbar-default-color: #fff;
+$navbar-default-link-color: $navbar-default-color;
+$background-texture: url('../images/body-bg.png');
+
+@import '../../../../node_modules/bootstrap/scss/bootstrap';
+
+body {
+	background: $background-texture;
+}
+
+.navbar-fixed-top {
+	background-color: $navbar-default-bg;
+	height: 55px;
+
+	a {
+		color: $navbar-default-color;
+	}
+}
+
+.navbar-brand img {
+	border-radius: 80px;
+	background: $background-texture;
+	width: 55px;
+	margin-top: -13px;
+}
+
+.footer {
+	display: none;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+ }
+
+.main-content {
+	padding-top: 3em;
+}
+
+.italic {
+	font-style: italic;
+}
+
+.article {
+	font-family: $font-family-serif;
+}
+
+.cites-header,
+.lemma,
+.synt-header,
+.bls-header,
+.bdv-header,
+.wbg-header,
+.ggs-header,
+.stw-header,
+.phras-header {
+	@extend .card-title;
+
+	font-weight: bold;
+	font-family: $font-family-sans-serif;
+}
+
+.lemma {
+	@extend h2;
+	display: inline-block;
+}
+
+.article_head {
+	display: inline-block;
+}
+
+.synt,
+.cites,
+.bls,
+.bdv,
+.wbg,
+.ggs,
+.stw,
+.phras {
+	@extend .card-block;
+}
+
+.sense {
+	@extend .card;
+
+	.definition {
+		@extend .card-header;
+
+		font-family: $font-family-sans-serif;
+		border-left: .25em solid $brand-primary;
+		padding-left: .5em;
+		margin-top: 2em;
+		color: $gray-dark;
+	}
+}
+
+.last-search {
+	ol {
+		margin-left: 0;
+		padding-left: 0;
+	li {
+		display: inline-block;
+		margin-right: 1em;
+	}
+	}
+}
+
+ul {
+	&.pagination {
+		li {
+			display: inline-block;
+			@extend .page-item;
+
+			a,
+			span {
+				@extend .page-link;
+			}
+		}
+	}
+}

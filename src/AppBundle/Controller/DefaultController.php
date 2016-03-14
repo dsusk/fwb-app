@@ -13,8 +13,15 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+
+
+        $client = $this->get('solarium.client');
+        $select = $client->createSelect();
+        $select->setQuery('foo');
+        $results = $client->select($select);
+
         // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', array(
+        return $this->render('search/index.html.twig', array(
             'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
         ));
     }

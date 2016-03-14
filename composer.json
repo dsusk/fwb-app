@@ -19,9 +19,11 @@
         "symfony/swiftmailer-bundle": "~2.3",
         "symfony/monolog-bundle": "~2.4",
         "sensio/distribution-bundle": "~5.0",
-        "sensio/framework-extra-bundle": "^3.0.2",
+        "sensio/framework-extra-bundle": "^3.0",
         "incenteev/composer-parameter-handler": "~2.0",
-        "nelmio/solarium-bundle": "^2.2"
+        "nelmio/solarium-bundle": "^2.2",
+        "symfony/console": "^2.8",
+        "symfony/assetic-bundle": "^2.8"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",
