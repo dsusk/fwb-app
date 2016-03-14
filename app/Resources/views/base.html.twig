@@ -1,17 +1,99 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% stylesheets
-             "css/app.css"
-         %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
-          {% endstylesheets %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Frühneuhochdeutsches Wörterbuch{% endblock %}</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        WebFontConfig = {
+            google: {families: ['Cardo:400,400italic,700:latin']}
+        };
+        (function () {
+            var wf = document.createElement('script');
+            wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        })(); </script>
+
+    {% stylesheets
+    "css/app.css" %}
+    <link rel="stylesheet" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+</head>
+<body>
+
+<nav class="navbar navbar-fixed-top">
+    <div class="col-lg-1 col-md-2">
+        <a class="navbar-brand" href="/">
+            <img src="{{ asset('images/logo-akademie-goettingen.png') }}"/>
+        </a>
+    </div>
+    <a class="navbar-brand" href="/">Frühneuhochdeutsches Wörterbuch</a>
+</nav>
+<header>
+    <div class="container">
+        <div class="row page-header">
+            <h1>Suche</h1>
+        </div>
+    </div>
+</header>
+<div class="container main-content">
+
+    {% block body %}
+
+    {% endblock %}
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Kontakt</h3>
+                        </div>
+                        <div class="card-block">
+                            <p>
+                                Projektleitung: Prof. Dr. Anja Lobenstein-Reichmann
+                                <br>
+                                <a href="mailto:anja.lobenstein-reichmann@mail.uni-goettingen.de">anja.lobenstein-reichmann@mail
+                                    .uni-goettingen.de</a>
+                            </p>
+                            <p>
+                                Allgemeine Anfragen: Angelika Haller-Wolf
+                                <br>
+                                Tel.: +49 (0)551 / 39-20607 | E-Mail: <a
+                                        href="mailto:ahaller@gwdg.de">ahaller@gwdg.de</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 col-md-offset-2">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Anschrift</h3>
+                        </div>
+                        <div class="card-block">
+                            <p>
+                                Frühneuhochdeutsches Wörterbuch
+                                <br>
+                                Forschungsstelle der Akademie der Wissenschaften zu Göttingen
+                                <br>
+                                Johann-Friedrich-Blumenbach-Institut
+                                <br>
+                                Berliner Straße 28 | D-37073 Göttingen
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </footer>
+    {% block javascripts %}{% endblock %}
+</body>
 </html>

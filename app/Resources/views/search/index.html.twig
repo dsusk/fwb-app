@@ -1,6 +1,36 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-Sayan
+    <script>
+    $(document).ready(function(){
 
+              var lastSearches = JSON.parse(localStorage.getItem('search'));
+
+        if (!lastSearches) {
+            lastSearches = [];
+        }
+
+              lastSearches.reverse();
+              var lastSearchesInfo = '<ol>';
+
+              $(lastSearches).each(function(id, text) {
+                  lastSearchesInfo += '<li><a href="/search?q=' + text + '">' + text + '</a></li>';
+              });
+
+              $('.last-search').html(lastSearchesInfo);
+          });
+      </script>
+
+    <div class="row">
+        <form class="form-inline" action="{{ path('search') }}">
+            <div class="form-group row">
+                <div class="col-lg-12">
+                    <label class="sr-only" for="main-search">Wörterbuchsuche</label>
+                    <input type="search" name="q" class="form-control form-control-lg" id="main-search" placeholder="Wörterbuchsuche">
+                    <button type="submit" class="btn btn-primary-outline btn-lg">Suche</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row">Ihre letzten Suchen: <div class="last-search"></div></div>
 {% endblock %}
