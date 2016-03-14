@@ -1,49 +1,64 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<script type="text/javascript">
+    <script type="text/javascript">
 
-       if (localStorage.getItem('search')) {
-           var searches = JSON.parse(localStorage.getItem('search'));
+        if (localStorage.getItem('search')) {
+            var searches = JSON.parse(localStorage.getItem('search'));
 
-           if (searches.length > 4) {
-               searches.pop()
-           }
-           searches.push("{{ searchTerm }}");
-           localStorage.setItem('search', JSON.stringify(searches));
-       } else {
-           localStorage.setItem('search', JSON.stringify(["{{ searchTerm}}"]));
-       }
+            if (searches.length > 4) {
+                searches.pop()
+            }
+            searches.push("{{ searchTerm }}");
+            localStorage.setItem('search', JSON.stringify(searches));
+        } else {
+            localStorage.setItem('search', JSON.stringify(["{{ searchTerm }}"]));
+        }
 
-       $(document).ready(function(){
+        $(document).ready(function () {
 
-           var lastSearches = JSON.parse(localStorage.getItem('search'));
-           lastSearches.reverse();
-           var lastSearchesInfo = '<ol>';
+            var lastSearches = JSON.parse(localStorage.getItem('search'));
+            lastSearches.reverse();
+            var lastSearchesInfo = '<ol>';
 
-           $(lastSearches).each(function(id, text) {
-               lastSearchesInfo += '<li><a href=" /search?q=' + text + '">' + text + '</a></li>';
-           });
+            $(lastSearches).each(function (id, text) {
+                lastSearchesInfo += '<li><a href=" /search?q=' + text + '">' + text + '</a></li>';
+            });
 
-           $('.last-search').html(lastSearchesInfo);
-       });
-   </script>
+            $('.last-search').html(lastSearchesInfo);
+        });
+    </script>
 
-   <div class="row">
-       <form class="form-inline" action="">
-           <div class="form-group row">
-               <div class="col-lg-12">
-                   <label class="sr-only" for="main-search">Wörterbuchsuche</label>
-                   <input type="search" name="q" class="form-control form-control-lg" id="main-search" placeholder="Wörterbuchsuche" value="{{ searchTerm }}">
-                   <button type="submit" class="btn btn-primary-outline btn-lg">Suche</button>
-               </div>
-           </div>
-       </form>
-   </div>
+    <div class="row">
+        <form class="form-inline" action="">
+            <div class="form-group row">
+                <div class="col-lg-12">
+                    <label class="sr-only" for="main-search">Wörterbuchsuche</label>
+                    <input type="search" name="q" class="form-control form-control-lg" id="main-search"
+                           placeholder="Wörterbuchsuche" value="{{ searchTerm }}">
+                    <button type="submit" class="btn btn-primary-outline btn-lg">Suche</button>
+                </div>
+            </div>
+        </form>
+    </div>
 
-   <div class="row">
-       <p>Die Suche nach »{{ searchTerm }}« ergab {{ resultCount }} Treffer</p>
-   </div>
+    <div class="row">
+        <p>Die Suche nach »{{ searchTerm }}« ergab {{ results.getTotalItemCount }} Treffer</p>
+    </div>
+    <div class="row">
+        <ul>
+            {% for article in results %}
+                <li><a href="{{ article.id }}">{{ article.lemma_normalized }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 
-   <div class="row">Ihre letzten Suchen: <div class="last-search"></div></div>
+    <nav>
+        {{ knp_pagination_render(results) }}
+    </nav>
+
+    <div class="row">Ihre letzten Suchen:
+        <div class="last-search"></div>
+    </div>
 {% endblock %}

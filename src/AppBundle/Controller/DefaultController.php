@@ -34,16 +34,16 @@ class DefaultController extends Controller
      * @Route("/search", name="search")
      *
      */
-    public function searchAction()
+    public function searchAction(Request $request)
     {
 
         $this->client = $this->get('solarium.client');
 
-        $request = Request::createFromGlobals();
-
         $client = $this->client;
 
         $searchTerm = 'lemma:' . $request->get('q') . '*';
+
+        $paginator  = $this->get('knp_paginator');
 
         // todo move into config
         $rows = 20;
@@ -58,36 +58,25 @@ class DefaultController extends Controller
 
         $query->setQuery($searchTerm);
 
-        // get the facetset component
-        $facetSet = $query->getFacetSet();
-
-        $facetSet->createFacetField('type_of_word');
-
         $fq = new FilterQuery();
         $fq->setKey('type');
         $fq->setQuery('type:artikel');
         $query->addFilterQuery($fq);
-        $resultset = $client->select($query);
+
+        $pagination = $paginator->paginate(
+             [$this->client, $query],
+            $currentPage,
+            $rows
+         );
 
 
-        $facets = $resultset->getFacetSet()->getFacet('type_of_word');
+        // $results = new LengthAwarePaginator($resultset->getDocuments(), $resultset->getNumFound(), $rows, null, ['path' => 'search']);
 
-        /*
-        $results = new LengthAwarePaginator($resultset->getDocuments(), $resultset->getNumFound(), $rows, null, ['path' => 'search']);
-
-        return view('search.results',
-            [
-                'searchTerm' => $request->get('q'),
-                'resultCount' => $resultset->getNumFound(),
-                'results' => $results,
-                'firstItem' => $results->firstItem(),
-                'facets' => $facets
-            ]
-
-        */
         return $this->render('search/results.html.twig', [
-                    'searchTerm' => $request->get('q'),
-            'resultCount' => $resultset->getNumFound()
+            'searchTerm' => $request->get('q'),
+            'results' => $pagination,
+            //'firstItem' => $results->firstItem(),
+
                 ]);
 
     }
