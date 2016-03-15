@@ -5,6 +5,11 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Solarium\QueryType\Select\Query\FilterQuery;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\Extension\Core\Type\SearchType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\FormBuilder;
+use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
@@ -20,27 +25,61 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-
-        $this->client = $this->get('solarium.client');
-
-        // replace this example code with whatever you need
-        return $this->render('search/index.html.twig', array(
-            'base_dir' => realpath($this->container->getParameter('kernel.root_dir') . '/..'),
-        ));
+        return $this->render('search/index.html.twig',
+            [
+                'searchForm' => $this->getSearchForm()->createView()
+            ]
+        );
     }
 
     /**
+     * @return \Symfony\Component\Form\Form
+     */
+    protected function getSearchForm()
+    {
+
+        /** @var FormBuilder $form */
+        $form = $this
+            ->get('form.factory')
+            ->createNamedBuilder(null, FormType::class, [], ['csrf_protection' => false])
+            ->add('q', SearchType::class, [
+                'attr' => [
+                    'placeholder' => $this->get('translator')->trans('dictionary search'),
+                ],
+                'label_attr' => [
+                    'class' => 'sr-only'
+                ]
+            ])
+            ->add('search', SubmitType::class, [
+                'label' => $this->get('translator')->trans('search'),
+            ])
+            ->setMethod('GET')
+            ->setAction($this->generateUrl('search'));
+
+        return $form->getForm();
+    }
+
+
+    /**
      * @Route("/search", name="search")
-     *
      */
     public function searchAction(Request $request)
     {
+
+        $form = $this->getSearchForm();
+        $form->handleRequest($request);
+
+        if (!$form->isSubmitted() && !$form->isValid()) {
+            return $this->redirectToRoute('homepage');
+        }
 
         $this->client = $this->get('solarium.client');
 
         $client = $this->client;
 
-        $searchTerm = 'lemma:' . $request->get('q') . '*';
+        $searchTerm = $form->get('q')->getNormData();
+
+        $solrSearchTerm = 'lemma:' . $searchTerm . '*';
 
         $paginator = $this->get('knp_paginator');
 
@@ -55,7 +94,7 @@ class DefaultController extends Controller
         $query->setStart($offset);
         $query->setRows($rows);
 
-        $query->setQuery($searchTerm);
+        $query->setQuery($solrSearchTerm);
 
         $fq = new FilterQuery();
         $fq->setKey('type');
@@ -69,8 +108,9 @@ class DefaultController extends Controller
         );
 
         return $this->render('search/results.html.twig', [
-            'searchTerm' => $request->get('q'),
+            'searchTerm' => $searchTerm,
             'results' => $pagination,
+            'searchForm' => $form->createView()
         ]);
 
     }

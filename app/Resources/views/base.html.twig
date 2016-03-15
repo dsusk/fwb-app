@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>{% block title %}Frühneuhochdeutsches Wörterbuch{% endblock %}</title>
+    <title>{% block title %}{% trans %}app name{% endtrans %}{% endblock %}</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
     <script type="text/javascript">
@@ -32,7 +32,7 @@
             <img src="{{ asset('images/logo-akademie-goettingen.png') }}"/>
         </a>
     </div>
-    <a class="navbar-brand" href="/">Frühneuhochdeutsches Wörterbuch</a>
+    <a class="navbar-brand" href="/">{% trans %}app name{% endtrans %}</a>
 </nav>
 <header>
     <div class="container">
@@ -46,54 +46,54 @@
     {% block body %}
 
     {% endblock %}
-    </div>
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-5">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Kontakt</h3>
-                        </div>
-                        <div class="card-block">
-                            <p>
-                                Projektleitung: Prof. Dr. Anja Lobenstein-Reichmann
-                                <br>
-                                <a href="mailto:anja.lobenstein-reichmann@mail.uni-goettingen.de">anja.lobenstein-reichmann@mail
-                                    .uni-goettingen.de</a>
-                            </p>
-                            <p>
-                                Allgemeine Anfragen: Angelika Haller-Wolf
-                                <br>
-                                Tel.: +49 (0)551 / 39-20607 | E-Mail: <a
-                                        href="mailto:ahaller@gwdg.de">ahaller@gwdg.de</a>
-                            </p>
-                        </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Kontakt</h3>
                     </div>
-                </div>
-                <div class="col-md-5 col-md-offset-2">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Anschrift</h3>
-                        </div>
-                        <div class="card-block">
-                            <p>
-                                Frühneuhochdeutsches Wörterbuch
-                                <br>
-                                Forschungsstelle der Akademie der Wissenschaften zu Göttingen
-                                <br>
-                                Johann-Friedrich-Blumenbach-Institut
-                                <br>
-                                Berliner Straße 28 | D-37073 Göttingen
-                            </p>
-                        </div>
+                    <div class="card-block">
+                        <p>
+                            Projektleitung: Prof. Dr. Anja Lobenstein-Reichmann
+                            <br>
+                            <a href="mailto:anja.lobenstein-reichmann@mail.uni-goettingen.de">anja.lobenstein-reichmann@mail
+                                .uni-goettingen.de</a>
+                        </p>
+                        <p>
+                            Allgemeine Anfragen: Angelika Haller-Wolf
+                            <br>
+                            Tel.: +49 (0)551 / 39-20607 | E-Mail: <a
+                                    href="mailto:ahaller@gwdg.de">ahaller@gwdg.de</a>
+                        </p>
                     </div>
                 </div>
             </div>
-
-
+            <div class="col-md-5 col-md-offset-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Anschrift</h3>
+                    </div>
+                    <div class="card-block">
+                        <p>
+                            Frühneuhochdeutsches Wörterbuch
+                            <br>
+                            Forschungsstelle der Akademie der Wissenschaften zu Göttingen
+                            <br>
+                            Johann-Friedrich-Blumenbach-Institut
+                            <br>
+                            Berliner Straße 28 | D-37073 Göttingen
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </footer>
-    {% block javascripts %}{% endblock %}
+
+
+    </div>
+</footer>
+{% block javascripts %}{% endblock %}
 </body>
 </html>

@@ -30,20 +30,17 @@
     </script>
 
     <div class="row">
-        <form class="form-inline" action="">
-            <div class="form-group row">
-                <div class="col-lg-12">
-                    <label class="sr-only" for="main-search">Wörterbuchsuche</label>
-                    <input type="search" name="q" class="form-control form-control-lg" id="main-search"
-                           placeholder="Wörterbuchsuche" value="{{ searchTerm }}">
-                    <button type="submit" class="btn btn-primary-outline btn-lg">Suche</button>
-                </div>
+        {{ form_start(searchForm, { 'attr': {'class': 'form-inline'} }) }}
+        <div class="form-group row">
+            <div class="col-lg-12">
+                {{ form_widget(searchForm) }}
             </div>
-        </form>
+        </div>
+        {{ form_end(searchForm) }}
     </div>
 
     <div class="row">
-        <p>Die Suche nach »{{ searchTerm }}« ergab {{ results.getTotalItemCount }} Treffer</p>
+        <p>{% trans with {'%search_term%': searchTerm, '%result_count%': results.getTotalItemCount} %}result info{% endtrans %}</p>
     </div>
     <div class="row">
         <ul>
@@ -58,7 +55,7 @@
         {{ knp_pagination_render(results) }}
     </nav>
 
-    <div class="row">Ihre letzten Suchen:
+    <div class="row">{% trans %}your last searchterms{% endtrans %}:
         <div class="last-search"></div>
     </div>
 {% endblock %}
