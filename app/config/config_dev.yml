@@ -32,16 +32,3 @@ monolog:
 
 #swiftmailer:
 #    delivery_address: me@example.com
-
-nelmio_solarium:
-    endpoints:
-        default:
-            scheme: http
-            host: adw-dev.tc.sub.uni-goettingen.de
-            port: 80
-            path: /solr
-            core: fwb
-            timeout: 5
-    clients:
-        default:
-            endpoints: [default]
