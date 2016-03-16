@@ -1,7 +1,7 @@
 {
   "name": "fwb",
   "version": "1.0.0",
-  "description": "fwbs ====",
+  "description": "fwbs",
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,8 +9,11 @@
   "author": "",
   "license": "AGPL-3.0",
   "dependencies": {
+    "autoprefixer": "^6.3.3",
     "bootstrap": "https://github.com/twbs/bootstrap/tarball/v4-dev",
     "gulp": "^3.9.1",
-    "gulp-sass": "^2.2.0"
+    "gulp-postcss": "^6.1.0",
+    "gulp-sass": "^2.2.0",
+    "gulp-scss-lint": "^0.3.9"
   }
 }
