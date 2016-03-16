@@ -7,6 +7,9 @@ var config = {
     paths: {
         sass: [
             'app/Resources/assets/scss/**/*.scss'
+        ],
+        jquery: [
+            'node_modules/jquery/dist/jquery.min.js'
         ]
     },
     autoprefixer: {
@@ -35,6 +38,8 @@ gulp.task('sass-lint', function () {
         }));
 });
 
+gulp.task('compile', ['sass', 'jquery'], function() {});
+
 gulp.task('sass', function() {
     gulp.src('app/Resources/assets/scss/**/*.scss')
         .pipe(sass())
@@ -46,4 +51,9 @@ gulp.task('watch', function () {
     gulp.watch(config.paths.sass, ['sass-lint', 'sass']);
 });
 
-gulp.task('default', ['sass', 'watch']);
+gulp.task('jquery', function() {
+    gulp.src(config.paths.jquery)
+        .pipe(gulp.dest('web/js'));
+});
+
+gulp.task('default', ['compile', 'watch']);
