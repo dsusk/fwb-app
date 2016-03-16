@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6e692c67c097beac47d6ffdad40f45cc",
-    "content-hash": "54e05d29284a86388eee6e4b350c8d75",
+    "hash": "fecfba0d3b2b6303e783c004d31018b9",
+    "content-hash": "f958b47e1107e5ce99500fe426e92577",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -2439,6 +2439,50 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "heroku/heroku-buildpack-php",
+            "version": "v97",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/heroku/heroku-buildpack-php.git",
+                "reference": "f5c08f61f14d376320c6b7ec3418bae7a962fca2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/heroku/heroku-buildpack-php/zipball/f5c08f61f14d376320c6b7ec3418bae7a962fca2",
+                "reference": "f5c08f61f14d376320c6b7ec3418bae7a962fca2",
+                "shasum": ""
+            },
+            "bin": [
+                "bin/heroku-hhvm-apache2",
+                "bin/heroku-hhvm-nginx",
+                "bin/heroku-php-apache2",
+                "bin/heroku-php-nginx"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Zuelke",
+                    "email": "dz@heroku.com"
+                }
+            ],
+            "description": "Toolkit for starting a PHP application locally, with or without foreman, using the same config for PHP/HHVM and Apache2/Nginx as on Heroku",
+            "homepage": "http://github.com/heroku/heroku-buildpack-php",
+            "keywords": [
+                "apache",
+                "apache2",
+                "foreman",
+                "heroku",
+                "hhvm",
+                "nginx",
+                "php"
+            ],
+            "time": "2016-03-10 18:54:45"
+        },
         {
             "name": "leafo/scssphp",
             "version": "v0.4.0",
