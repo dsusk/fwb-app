@@ -102,7 +102,9 @@ class DefaultController extends Controller
         $query->addFilterQuery($fq);
 
         $pagination = $paginator->paginate(
-            [$this->client, $query],
+            [
+                $this->client, $query
+            ],
             $currentPage,
             $rows
         );
@@ -110,7 +112,8 @@ class DefaultController extends Controller
         return $this->render('search/results.html.twig', [
             'searchTerm' => $searchTerm,
             'results' => $pagination,
-            'searchForm' => $form->createView()
+            'searchForm' => $form->createView(),
+            'offset' => $offset
         ]);
 
     }

@@ -43,12 +43,12 @@
         <p>{% trans with {'%search_term%': searchTerm, '%result_count%': results.getTotalItemCount} %}result info{% endtrans %}</p>
     </div>
     <div class="row">
-        <ul>
+        <ol start="{{ offset + 1}}">
             {% for article in results %}
                 <li><a href="{{ path('_lemma', {'id': article.internal_id}) }}">{{ article.lemma_normalized }}</a>
                 </li>
             {% endfor %}
-        </ul>
+        </ol>
     </div>
 
     <nav>
