@@ -5691,3 +5691,9 @@ ul.pagination li {
 .result-list em {
   display: inline-block;
   box-shadow: inset -3px 2px 16px 0 #fff200; }
+
+.result-list .result-link {
+  font-weight: bold; }
+
+.result-list .result-item {
+  margin-bottom: 1em; }

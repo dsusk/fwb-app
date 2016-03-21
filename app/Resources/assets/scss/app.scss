@@ -127,10 +127,17 @@ ul {
 	}
 }
 
-
 .result-list {
 	em {
 		display: inline-block;
 		box-shadow: inset -3px 2px 16px 0 rgba(255, 242, 0, 1);
+	}
+
+	.result-link {
+		font-weight: bold;
+	}
+
+	.result-item {
+		margin-bottom: 1em;
 	}
 }
