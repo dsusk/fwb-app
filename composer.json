@@ -30,7 +30,8 @@
     "require-dev": {
         "sensio/generator-bundle": "~3.0",
         "symfony/phpunit-bridge": "~2.7",
-        "heroku/heroku-buildpack-php": "^97.0"
+        "heroku/heroku-buildpack-php": "^97.0",
+        "liip/functional-test-bundle": "^1.5"
     },
     "scripts": {
         "post-install-cmd": [
