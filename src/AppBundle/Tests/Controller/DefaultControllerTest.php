@@ -2,17 +2,41 @@
 
 namespace AppBundle\Tests\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Liip\FunctionalTestBundle\Test\WebTestCase;
 
 class DefaultControllerTest extends WebTestCase
 {
     public function testIndex()
     {
-        $client = static::createClient();
+        $client = static::makeClient();
 
-        $crawler = $client->request('GET', '/');
+        $client->request('GET', '/search');
+        $this->assertStatusCode(302, $client);
 
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        $this->assertContains('Frühneuhochdeutsches Wörterbuch', $crawler->filter('.navbar-brand')->text());
+        $content = $this->fetchContent('/');
+        $this->assertContains(
+            'Frühneuhochdeutsches Wörterbuch',
+            $content
+        );
+    }
+
+    /**
+     * @dataProvider urlProvider
+     */
+    public function testUrls($url)
+    {
+        $client = static::makeClient();
+        $client->request('GET', $url);
+
+        $this->assertTrue($client->getResponse()->isSuccessful());
+    }
+
+    public function urlProvider()
+    {
+        return [
+            ['/'],
+            ['/search?q=imbis'],
+            ['/lemma/imbis.s.*'],
+        ];
     }
 }
