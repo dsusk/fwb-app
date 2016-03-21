@@ -9,7 +9,7 @@ var config = {
         sass: [
             'app/Resources/assets/scss/**/*.scss'
         ],
-        jquery: [
+        javascript: [
             'node_modules/jquery/dist/jquery.min.js'
         ]
     },
@@ -53,7 +53,7 @@ gulp.task('watch', function () {
 });
 
 gulp.task('jquery', function() {
-    gulp.src(config.paths.jquery)
+    gulp.src(config.paths.javascript)
         .pipe(gulp.dest('web/js'));
 });
 

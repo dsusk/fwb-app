@@ -9,8 +9,8 @@ use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilder;
-use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -45,6 +45,7 @@ class DefaultController extends Controller
             ->add('q', SearchType::class, [
                 'attr' => [
                     'placeholder' => $this->get('translator')->trans('dictionary search'),
+                    'class' => 'typeahead'
                 ],
                 'label_attr' => [
                     'class' => 'sr-only'
@@ -110,7 +111,8 @@ class DefaultController extends Controller
 
         $pagination = $paginator->paginate(
             [
-                $this->client, $query
+                $this->client,
+                $query
             ],
             $currentPage,
             $rows
@@ -124,6 +126,39 @@ class DefaultController extends Controller
             'offset' => $offset
         ]);
 
+    }
+
+    /**
+     * @Route("/autocomplete", name="_autocomplete")
+     */
+    public function autocompleteAction(Request $request)
+    {
+        $client = $this->get('solarium.client');
+
+        // get a suggester query instance
+        $query = $client->createSuggester();
+        $query->setQuery($request->get('term'));
+        $query->setDictionary('suggest');
+        $query->setOnlyMorePopular(true);
+        $query->setCount(10);
+        $query->setCollate(true);
+
+        // this executes the query and returns the result
+        $resultset = $client->suggester($query);
+
+        $suggestions = [];
+
+        foreach ($resultset as $term => $termResult) {
+            foreach ($termResult as $result) {
+                $suggestions[] = $result;
+            }
+        }
+
+        $response = new Response();
+        $response->setContent(json_encode($suggestions));
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
     }
 
 }

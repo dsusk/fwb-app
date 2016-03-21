@@ -24,7 +24,8 @@
         "nelmio/solarium-bundle": "^2.2",
         "symfony/console": "^2.8",
         "symfony/assetic-bundle": "^2.8",
-        "knplabs/knp-paginator-bundle": "^2.5"
+        "knplabs/knp-paginator-bundle": "^2.5",
+        "symfony/http-foundation": "^2.8"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",

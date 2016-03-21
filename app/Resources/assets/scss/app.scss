@@ -4,6 +4,7 @@
 $font-family-serif: 'Cardo', serif;
 $font-family-sans-serif: 'Open Sans', sans-serif;
 $brand-primary: #c90230;
+$highlight-color: #fff200;
 
 $enable-flex: true;
 $navbar-default-bg: $brand-primary;
@@ -12,6 +13,7 @@ $navbar-default-link-color: $navbar-default-color;
 $background-texture: url('../images/body-bg.png');
 
 @import '../../../../node_modules/bootstrap/scss/bootstrap';
+@import 'jquery-ui';
 
 body {
 	background: $background-texture;
@@ -130,7 +132,7 @@ ul {
 .result-list {
 	em {
 		display: inline-block;
-		box-shadow: inset -3px 2px 16px 0 rgba(255, 242, 0, 1);
+		box-shadow: inset -3px 2px 16px 0 $highlight-color;
 	}
 
 	.result-link {
