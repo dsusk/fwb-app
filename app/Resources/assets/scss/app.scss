@@ -105,23 +105,32 @@ body {
 	ol {
 		margin-left: 0;
 		padding-left: 0;
-	li {
-		display: inline-block;
-		margin-right: 1em;
-	}
+
+		li {
+			display: inline-block;
+			margin-right: 1em;
+		}
 	}
 }
 
 ul {
 	&.pagination {
 		li {
-			display: inline-block;
 			@extend .page-item;
+			display: inline-block;
 
 			a,
 			span {
 				@extend .page-link;
 			}
 		}
+	}
+}
+
+
+.result-list {
+	em {
+		display: inline-block;
+		box-shadow: inset -3px 2px 16px 0 rgba(255, 242, 0, 1);
 	}
 }

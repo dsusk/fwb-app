@@ -1,6 +1,7 @@
 var gulp = require('gulp'),
     scsslint = require('gulp-scss-lint'),
     postcss = require('gulp-postcss'),
+    cached = require('gulp-cached'),
     sass = require('gulp-sass');
 
 var config = {

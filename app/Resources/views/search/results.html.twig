@@ -42,10 +42,13 @@
     <div class="row">
         <p>{% trans with {'%search_term%': searchTerm, '%result_count%': results.getTotalItemCount} %}result info{% endtrans %}</p>
     </div>
-    <div class="row">
+    <div class="row result-list">
         <ol start="{{ offset + 1}}">
             {% for article in results %}
-                <li><a href="{{ path('_lemma', {'id': article.internal_id}) }}">{{ article.lemma_normalized }}</a>
+                <li>
+                    <a href="{{ path('_lemma', {'id': article.internal_id}) }}">{{ article.lemma_normalized }}</a>
+                    <br>
+                    {{ attribute(highlightResults.results, article.id).fields.article_html.0 | striptags('<em>') | raw}}
                 </li>
             {% endfor %}
         </ol>

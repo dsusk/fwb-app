@@ -41,7 +41,7 @@ class DefaultController extends Controller
         /** @var FormBuilder $form */
         $form = $this
             ->get('form.factory')
-            ->createNamedBuilder(null, FormType::class, [], ['csrf_protection' => false])
+            ->createNamedBuilder('', FormType::class, [], ['csrf_protection' => false])
             ->add('q', SearchType::class, [
                 'attr' => [
                     'placeholder' => $this->get('translator')->trans('dictionary search'),
@@ -96,6 +96,13 @@ class DefaultController extends Controller
 
         $query->setQuery($solrSearchTerm);
 
+        // get highlighting component and apply settings
+        $hl = $query->getHighlighting();
+        $hl->setFields('article_html');
+        $hl->setSimplePrefix('<em>');
+        $hl->setSimplePostfix('</em>');
+
+        // get filter query component
         $fq = new FilterQuery();
         $fq->setKey('type');
         $fq->setQuery('type:artikel');
@@ -111,6 +118,7 @@ class DefaultController extends Controller
 
         return $this->render('search/results.html.twig', [
             'searchTerm' => $searchTerm,
+            'highlightResults' => $this->client->select($query)->getHighlighting(),
             'results' => $pagination,
             'searchForm' => $form->createView(),
             'offset' => $offset
