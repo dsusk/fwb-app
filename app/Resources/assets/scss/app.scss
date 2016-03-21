@@ -54,15 +54,15 @@ body {
 	font-family: $font-family-serif;
 }
 
-.cites-header,
+.cites-begin,
 .lemma,
-.synt-header,
-.bls-header,
-.bdv-header,
-.wbg-header,
-.ggs-header,
-.stw-header,
-.phras-header {
+.synt-begin,
+.bls-begin,
+.bdv-begin,
+.wbg-begin,
+.ggs-begin,
+.stw-begin,
+.phras-begin {
 	@extend .card-title;
 
 	font-weight: bold;
@@ -85,7 +85,9 @@ body {
 .wbg,
 .ggs,
 .stw,
-.phras {
+.phras,
+.dict-ref,
+.subvoce {
 	@extend .card-block;
 }
 

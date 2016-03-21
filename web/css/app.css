@@ -3397,7 +3397,9 @@ input[type="button"].btn-block {
 .wbg,
 .ggs,
 .stw,
-.phras {
+.phras,
+.dict-ref,
+.subvoce {
   padding: 1.25rem; }
   .card-block::after, .synt::after,
   .cites::after,
@@ -3406,20 +3408,22 @@ input[type="button"].btn-block {
   .wbg::after,
   .ggs::after,
   .stw::after,
-  .phras::after {
+  .phras::after,
+  .dict-ref::after,
+  .subvoce::after {
     content: "";
     display: table;
     clear: both; }
 
-.card-title, .cites-header,
+.card-title, .cites-begin,
 .lemma,
-.synt-header,
-.bls-header,
-.bdv-header,
-.wbg-header,
-.ggs-header,
-.stw-header,
-.phras-header {
+.synt-begin,
+.bls-begin,
+.bdv-begin,
+.wbg-begin,
+.ggs-begin,
+.stw-begin,
+.phras-begin {
   margin-bottom: 0.75rem; }
 
 .card-subtitle {
@@ -3528,23 +3532,23 @@ input[type="button"].btn-block {
 .card-inverse .card-header, .card-inverse .sense .definition, .sense .card-inverse .definition,
 .card-inverse .card-footer,
 .card-inverse .card-title,
-.card-inverse .cites-header,
+.card-inverse .cites-begin,
 .card-inverse
 .lemma,
 .card-inverse
-.synt-header,
+.synt-begin,
 .card-inverse
-.bls-header,
+.bls-begin,
 .card-inverse
-.bdv-header,
+.bdv-begin,
 .card-inverse
-.wbg-header,
+.wbg-begin,
 .card-inverse
-.ggs-header,
+.ggs-begin,
 .card-inverse
-.stw-header,
+.stw-begin,
 .card-inverse
-.phras-header,
+.phras-begin,
 .card-inverse .card-blockquote {
   color: #fff; }
 
@@ -6532,15 +6536,15 @@ body {
 .article {
   font-family: "Cardo", serif; }
 
-.cites-header,
+.cites-begin,
 .lemma,
-.synt-header,
-.bls-header,
-.bdv-header,
-.wbg-header,
-.ggs-header,
-.stw-header,
-.phras-header {
+.synt-begin,
+.bls-begin,
+.bdv-begin,
+.wbg-begin,
+.ggs-begin,
+.stw-begin,
+.phras-begin {
   font-weight: bold;
   font-family: "Open Sans", sans-serif; }
 
