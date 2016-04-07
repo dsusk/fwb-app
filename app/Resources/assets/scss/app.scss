@@ -78,6 +78,15 @@ body {
 	display: inline-block;
 }
 
+.citation {
+	.name {
+		font-variant: small-caps;
+	}
+	.quote {
+		font-style: italic;
+	}
+}
+
 .synt,
 .citations,
 .bls,

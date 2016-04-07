@@ -6554,6 +6554,12 @@ body {
 .article_head {
   display: inline-block; }
 
+.citation .name {
+  font-variant: small-caps; }
+
+.citation .quote {
+  font-style: italic; }
+
 .sense .definition {
   font-family: "Open Sans", sans-serif;
   border-left: 0.25em solid #c90230;
