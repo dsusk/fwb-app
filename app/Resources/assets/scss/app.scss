@@ -60,6 +60,8 @@ body {
 }
 
 .article {
+	@extend .col-md-8;
+
 	font-family: $font-family-serif;
 }
 
@@ -91,7 +93,9 @@ body {
 	font-variant: small-caps;
 }
 
-.citation {
+.citation,
+.bdv,
+.synt {
 	text-indent: -1em;
 	margin-left: 1em;
 

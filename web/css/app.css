@@ -1163,7 +1163,7 @@ pre {
         -ms-flex: 0 0 58.33333%;
             flex: 0 0 58.33333%;
     max-width: 58.33333%; }
-  .col-md-8 {
+  .col-md-8, .article {
     position: relative;
     min-height: 1px;
     padding-right: 15px;
@@ -6561,10 +6561,14 @@ body {
 .name {
   font-variant: small-caps; }
 
-.citation {
+.citation,
+.bdv,
+.synt {
   text-indent: -1em;
   margin-left: 1em; }
-  .citation .quote {
+  .citation .quote,
+  .bdv .quote,
+  .synt .quote {
     font-style: italic; }
 
 .higher-and-smaller {
