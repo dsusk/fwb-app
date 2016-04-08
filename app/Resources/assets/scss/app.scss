@@ -50,6 +50,15 @@ body {
 	font-style: italic;
 }
 
+.neblem {
+	font-weight: bold;
+}
+
+.type-of-word,
+.flex {
+	@extend .italic;
+}
+
 .article {
 	font-family: $font-family-serif;
 }
@@ -78,13 +87,21 @@ body {
 	display: inline-block;
 }
 
+.name {
+	font-variant: small-caps;
+}
+
 .citation {
-	.name {
-		font-variant: small-caps;
-	}
+
 	.quote {
 		font-style: italic;
 	}
+}
+
+.higher-and-smaller {
+	vertical-align: super;
+	font-size: .7em;
+	margin-right: -.25em;
 }
 
 .synt,
