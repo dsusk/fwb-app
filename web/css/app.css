@@ -6561,8 +6561,11 @@ body {
 .name {
   font-variant: small-caps; }
 
-.citation .quote {
-  font-style: italic; }
+.citation {
+  text-indent: -1em;
+  margin-left: 1em; }
+  .citation .quote {
+    font-style: italic; }
 
 .higher-and-smaller {
   vertical-align: super;
