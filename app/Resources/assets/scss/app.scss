@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Cardo:400,400italic');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic');
 
-$font-family-serif: 'Cardo', serif;
 $font-family-sans-serif: 'Open Sans', sans-serif;
 $brand-primary: #c90230;
 $highlight-color: #fff200;
@@ -61,8 +59,6 @@ body {
 
 .article {
 	@extend .col-md-8;
-
-	font-family: $font-family-serif;
 }
 
 .citations-begin,
@@ -77,7 +73,6 @@ body {
 	@extend .card-title;
 
 	font-weight: bold;
-	font-family: $font-family-sans-serif;
 }
 
 .lemma {
@@ -129,7 +124,6 @@ body {
 	.definition {
 		@extend .card-header;
 
-		font-family: $font-family-sans-serif;
 		border-left: .25em solid $brand-primary;
 		padding-left: .5em;
 		margin-top: 2em;
