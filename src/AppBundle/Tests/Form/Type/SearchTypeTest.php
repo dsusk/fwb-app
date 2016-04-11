@@ -1,7 +1,7 @@
 <?php
 namespace AppBundle\Tests\Form\Type;
 
-use AppBundle\Form\Type\SearchForm;
+use AppBundle\Form\Type\SearchType;
 use AppBundle\Model\TestObject;
 use Symfony\Component\Form\Test\TypeTestCase;
 
@@ -17,7 +17,7 @@ class SearchFieldTest extends TypeTestCase
                 'test2' => 'test2',
             );
 
-            $form = $this->factory->create(TestedType::class);
+            $form = $this->factory->create(SearchType::class);
 
             $object = TestObject::fromArray($formData);
 

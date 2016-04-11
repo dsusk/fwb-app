@@ -1,5 +1,5 @@
 {
-    "name": "ingop/fwbs",
+    "name": "subugoe/fwbs",
     "license": "proprietary",
     "type": "project",
     "autoload": {
@@ -54,7 +54,7 @@
     "config": {
         "bin-dir": "bin",
         "platform": {
-            "php": "5.3.9"
+            "php": "7.0.5"
         }
     },
     "extra": {

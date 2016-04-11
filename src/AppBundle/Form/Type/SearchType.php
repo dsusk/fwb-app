@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 /**
  * Search form
  */
-class SearchForm extends AbstractType
+class SearchType extends AbstractType
 {
 
 }
