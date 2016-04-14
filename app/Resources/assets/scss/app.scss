@@ -4,7 +4,7 @@ $font-family-sans-serif: 'Open Sans', sans-serif;
 $brand-primary: #c90230;
 $highlight-color: #fff200;
 
-$enable-flex: true;
+$enable-flex: false;
 $navbar-default-bg: $brand-primary;
 $navbar-default-color: #fff;
 $navbar-default-link-color: $navbar-default-color;
@@ -42,7 +42,7 @@ body {
  }
 
 .main-content {
-	@extend .row;
+	@include make-row();
 }
 
 .italic {
@@ -75,9 +75,13 @@ body {
 			font-weight: bold;
 		}
 
-		.results-list {
+		.result-list {
 			padding-left: 0;
 			list-style: none;
+
+			.result-link {
+				font-weight: normal;
+			}
 		}
 	}
 }
@@ -98,6 +102,7 @@ body {
 
 .lemma {
 	@extend h2;
+
 	display: inline-block;
 }
 
@@ -177,18 +182,19 @@ ul {
 		}
 	}
 }
+.main-content {
+	.result-list {
+		em {
+			display: inline-block;
+			box-shadow: inset -3px 2px 16px 0 $highlight-color;
+		}
 
-.result-list {
-	em {
-		display: inline-block;
-		box-shadow: inset -3px 2px 16px 0 $highlight-color;
-	}
+		.result-link {
+			font-weight: bold;
+		}
 
-	.result-link {
-		font-weight: bold;
-	}
-
-	.result-item {
-		margin-bottom: 1em;
+		.result-item {
+			margin-bottom: 1em;
+		}
 	}
 }
