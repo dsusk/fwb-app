@@ -1,18 +1,20 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {{  result[0]['article_html'] | raw }}
+    {{  result['article_html'] | raw }}
 
     <aside class="sidebar">
-        <article class="results">
-            <h1>{% trans with {'%search_term%': searchTerm} %}results for{% endtrans %}</h1>
+        {% if searchTerm %}
+            <article class="results">
+                <h1>{% trans with {'%search_term%': searchTerm} %}results for{% endtrans %}</h1>
 
-            <ol class="result-list">
-                {% for document in documents %}
-                    <li><a class="result-link" href="{{ path('_lemma', {'id': document.internal_id}) }}?q={{ searchTerm }}">{{ document.lemma_normalized }}</a></li>
-                {% endfor %}
-            </ol>
-        </article>
+                <ol class="result-list">
+                    {% for document in documents %}
+                        <li><a class="result-link{% if document.internal_id == result.internal_id %} active{% endif %}" href="{{ path('_lemma', {'id': document.internal_id}) }}?q={{ searchTerm }}">{{ document.lemma_normalized }}</a></li>
+                    {% endfor %}
+                </ol>
+            </article>
+        {% endif %}
     </aside>
 
 {% endblock %}

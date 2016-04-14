@@ -81,6 +81,10 @@ body {
 
 			.result-link {
 				font-weight: normal;
+
+				&.active {
+					font-weight: bold;
+				}
 			}
 		}
 	}

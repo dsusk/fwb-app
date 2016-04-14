@@ -35,7 +35,7 @@ class ItemController extends Controller
 
         return $this->render('item/detail.html.twig',
             [
-                'result' => $resultset->getDocuments(),
+                'result' => $resultset->getDocuments()[0],
                 'documents' => $this->getResultsFor($originalSearchTerm),
                 'searchTerm' => $originalSearchTerm
             ]);

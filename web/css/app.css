@@ -5940,6 +5940,8 @@ body {
   list-style: none; }
   .sidebar .results .result-list .result-link {
     font-weight: normal; }
+    .sidebar .results .result-list .result-link.active {
+      font-weight: bold; }
 
 .citations-begin,
 .lemma,
