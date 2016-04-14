@@ -5984,12 +5984,14 @@ body {
   margin-top: 2em;
   color: #373a3c; }
 
-.last-search ol {
-  margin-left: .25em;
-  padding-left: 0; }
-  .last-search ol li {
-    display: inline-block;
-    margin-right: 1em; }
+.last-search {
+  display: inline-block; }
+  .last-search ol {
+    margin-left: .25em;
+    padding-left: 0; }
+    .last-search ol li {
+      display: inline-block;
+      margin-right: 1em; }
 
 ul.pagination li {
   display: inline-block; }
