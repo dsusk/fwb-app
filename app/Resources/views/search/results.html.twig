@@ -46,7 +46,7 @@
         <ol start="{{ offset + 1}}">
             {% for article in results %}
                 <li class="result-item">
-                    <a class="result-link" href="{{ path('_lemma', {'id': article.internal_id}) }}?q={{ searchTerm }}">{{ article.lemma_normalized }}</a>
+                    <a class="result-link" href="{{ path('_lemma', {'id': article.internal_id}) }}?q={{ searchTerm }}">{{ article.lemma_normalized }} {% if article.type_of_word %}({{ article.type_of_word }}){% endif %}</a>
                     <br>
                     {{ attribute(highlightResults.results, article.id).fields.article_html.0 | striptags('<em>') | raw}}
                 </li>

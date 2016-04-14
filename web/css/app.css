@@ -5896,7 +5896,7 @@ a.text-danger:focus, a.text-danger:hover {
 
 body {
   background: url("../images/body-bg.png");
-  margin-top: 5em; }
+  padding-top: 5em; }
 
 .navbar-fixed-top {
   background-color: #c90230;
@@ -5981,7 +5981,6 @@ body {
 .sense .definition {
   border-left: 0.25em solid #c90230;
   padding-left: .5em;
-  margin-top: 2em;
   color: #373a3c; }
 
 .last-search {

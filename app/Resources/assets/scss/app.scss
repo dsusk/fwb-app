@@ -9,18 +9,20 @@ $navbar-default-bg: $brand-primary;
 $navbar-default-color: #fff;
 $navbar-default-link-color: $navbar-default-color;
 $background-texture: url('../images/body-bg.png');
+$topbar-height: 55px;
+
 
 @import '../../../../node_modules/bootstrap/scss/bootstrap';
 @import 'jquery-ui';
 
 body {
 	background: $background-texture;
-	margin-top: 5em;
+	padding-top: 5em;
 }
 
 .navbar-fixed-top {
 	background-color: $navbar-default-bg;
-	height: 55px;
+	height: $topbar-height;
 
 	a {
 		color: $navbar-default-color;
@@ -30,7 +32,7 @@ body {
 .navbar-brand img {
 	border-radius: 80px;
 	background: $background-texture;
-	width: 55px;
+	width: $topbar-height;
 	margin-top: -13px;
 }
 
@@ -156,7 +158,6 @@ body {
 
 		border-left: .25em solid $brand-primary;
 		padding-left: .5em;
-		margin-top: 2em;
 		color: $gray-dark;
 	}
 }
@@ -188,6 +189,7 @@ ul {
 		}
 	}
 }
+
 .main-content {
 	.result-list {
 		em {
