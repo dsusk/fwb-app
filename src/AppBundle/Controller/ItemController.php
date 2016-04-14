@@ -42,13 +42,13 @@ class ItemController extends Controller
     }
 
     /**
-     * @param string $searchTerm
+     * @param string $term
      * @return Result
      */
-    protected function getResultsFor($searchTerm)
+    protected function getResultsFor($term)
     {
         $client = $this->get('solarium.client');
-        $solrSearchTerm = 'lemma:' . $searchTerm . '*';
+        $solrSearchTerm = 'lemma:' . $term . '*';
         $query = $client->createSelect();
         $query->setQuery($solrSearchTerm);
 
