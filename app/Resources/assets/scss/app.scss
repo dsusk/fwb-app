@@ -15,6 +15,7 @@ $background-texture: url('../images/body-bg.png');
 
 body {
 	background: $background-texture;
+	margin-top: 5em;
 }
 
 .navbar-fixed-top {
@@ -41,7 +42,7 @@ body {
  }
 
 .main-content {
-	padding-top: 3em;
+	@extend .row;
 }
 
 .italic {
@@ -58,7 +59,27 @@ body {
 }
 
 .article {
-	@extend .col-md-8;
+	@extend .col-md-9;
+}
+
+.sidebar {
+	@extend .col-md-3;
+
+	.results {
+		@extend .card-block;
+
+		h1 {
+			@extend .card-title;
+
+			font-size: $font-size-base;
+			font-weight: bold;
+		}
+
+		.results-list {
+			padding-left: 0;
+			list-style: none;
+		}
+	}
 }
 
 .citations-begin,
@@ -133,7 +154,7 @@ body {
 
 .last-search {
 	ol {
-		margin-left: 0;
+		margin-left: .25em;
 		padding-left: 0;
 
 		li {

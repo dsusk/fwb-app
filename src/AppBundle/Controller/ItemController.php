@@ -3,7 +3,9 @@
 namespace AppBundle\Controller;
 
 use Solarium\Core\Query\Result\Result;
+use Solarium\QueryType\Select\Query\FilterQuery;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ItemController extends Controller
@@ -14,11 +16,13 @@ class ItemController extends Controller
      * @param string $id
      * @return string
      */
-    public function indexAction($id)
+    public function indexAction(Request $request, $id)
     {
 
         $client = $this->get('solarium.client');
         $searchTerm = 'internal_id:' . $id;
+
+        $originalSearchTerm = $request->get('q');
 
         $query = $client->createSelect();
         $query->setQuery($searchTerm);
@@ -29,6 +33,33 @@ class ItemController extends Controller
             return $this->redirectToRoute('search', ['q' => $id], 301);
         }
 
-        return $this->render('item/detail.html.twig', ['result' => $resultset->getDocuments()]);
+        return $this->render('item/detail.html.twig',
+            [
+                'result' => $resultset->getDocuments(),
+                'documents' => $this->getResultsFor($originalSearchTerm),
+                'searchTerm' => $originalSearchTerm
+            ]);
     }
+
+    /**
+     * @param string $searchTerm
+     * @return Result
+     */
+    protected function getResultsFor($searchTerm)
+    {
+        $client = $this->get('solarium.client');
+        $solrSearchTerm = 'lemma:' . $searchTerm . '*';
+        $query = $client->createSelect();
+        $query->setQuery($solrSearchTerm);
+
+        // get filter query component
+        $fq = new FilterQuery();
+        $fq->setKey('type');
+        $fq->setQuery('type:artikel');
+        $query->addFilterQuery($fq);
+
+        return $client->select($query);
+
+    }
+
 }

@@ -2,4 +2,17 @@
 
 {% block body %}
     {{  result[0]['article_html'] | raw }}
+
+    <aside class="sidebar">
+        <article class="results">
+            <h1>{% trans with {'%search_term%': searchTerm} %}results for{% endtrans %}</h1>
+
+            <ol class="results-list">
+            {% for document in documents %}
+                <li><a class="result-link" href="{{ path('_lemma', {'id': document.internal_id}) }}?q={{ searchTerm }}">{{ document.lemma_normalized }}</a></li>
+            {% endfor %}
+            </ol>
+        </article>
+    </aside>
+
 {% endblock %}

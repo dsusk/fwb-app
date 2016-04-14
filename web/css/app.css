@@ -599,7 +599,7 @@ pre {
   padding-left: 15px;
   padding-right: 15px; }
 
-.row {
+.row, .main-content {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1112,7 +1112,7 @@ pre {
         -ms-flex: 0 0 16.66667%;
             flex: 0 0 16.66667%;
     max-width: 16.66667%; }
-  .col-md-3 {
+  .col-md-3, .sidebar {
     position: relative;
     min-height: 1px;
     padding-right: 15px;
@@ -1162,7 +1162,7 @@ pre {
         -ms-flex: 0 0 58.33333%;
             flex: 0 0 58.33333%;
     max-width: 58.33333%; }
-  .col-md-8, .article {
+  .col-md-8 {
     position: relative;
     min-height: 1px;
     padding-right: 15px;
@@ -1172,7 +1172,7 @@ pre {
         -ms-flex: 0 0 66.66667%;
             flex: 0 0 66.66667%;
     max-width: 66.66667%; }
-  .col-md-9 {
+  .col-md-9, .article {
     position: relative;
     min-height: 1px;
     padding-right: 15px;
@@ -3389,7 +3389,7 @@ input[type="button"].btn-block {
   border-radius: 0.25rem;
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.125); }
 
-.card-block, .synt,
+.card-block, .sidebar .results, .synt,
 .citations,
 .bls,
 .bdv,
@@ -3400,7 +3400,7 @@ input[type="button"].btn-block {
 .dict-ref,
 .subvoce {
   padding: 1.25rem; }
-  .card-block::after, .synt::after,
+  .card-block::after, .sidebar .results::after, .synt::after,
   .citations::after,
   .bls::after,
   .bdv::after,
@@ -3414,7 +3414,7 @@ input[type="button"].btn-block {
     display: table;
     clear: both; }
 
-.card-title, .citations-begin,
+.card-title, .sidebar .results h1, .citations-begin,
 .lemma,
 .synt-begin,
 .bls-begin,
@@ -3531,6 +3531,8 @@ input[type="button"].btn-block {
 .card-inverse .card-header, .card-inverse .sense .definition, .sense .card-inverse .definition,
 .card-inverse .card-footer,
 .card-inverse .card-title,
+.card-inverse .sidebar .results h1, .sidebar .results
+.card-inverse h1,
 .card-inverse .citations-begin,
 .card-inverse
 .lemma,
@@ -6506,7 +6508,8 @@ a.text-danger:focus, a.text-danger:hover {
   border-radius: 8px; }
 
 body {
-  background: url("../images/body-bg.png"); }
+  background: url("../images/body-bg.png");
+  margin-top: 5em; }
 
 .navbar-fixed-top {
   background-color: #c90230;
@@ -6526,15 +6529,20 @@ body {
   bottom: 0;
   width: 100%; }
 
-.main-content {
-  padding-top: 3em; }
-
 .italic, .type-of-word,
 .flex {
   font-style: italic; }
 
 .neblem {
   font-weight: bold; }
+
+.sidebar .results h1 {
+  font-size: 1rem;
+  font-weight: bold; }
+
+.sidebar .results .results-list {
+  padding-left: 0;
+  list-style: none; }
 
 .citations-begin,
 .lemma,
@@ -6578,7 +6586,7 @@ body {
   color: #373a3c; }
 
 .last-search ol {
-  margin-left: 0;
+  margin-left: .25em;
   padding-left: 0; }
   .last-search ol li {
     display: inline-block;
