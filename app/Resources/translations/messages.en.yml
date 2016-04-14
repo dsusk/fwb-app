@@ -3,3 +3,4 @@ search: Search
 dictionary search: Dictionary Search
 your last searchterms: Your last searchterms
 result info: Searching for »%search_term%« got %result_count% hits
+results for: Results for »%search_term%«
