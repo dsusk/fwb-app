@@ -29,49 +29,47 @@
         });
     </script>
 
-    <div class="row">
-        {{ form_start(searchForm, { 'attr': {'class': 'form-inline'} }) }}
-        <div class="form-group row">
-            <div class="col-lg-12">
-                {{ form_widget(searchForm) }}
-            </div>
-        </div>
-        {{ form_end(searchForm) }}
+
+    {{ form_start(searchForm, { 'attr': {'class': 'form-inline'} }) }}
+    <div class="form-group">
+        {{ form_widget(searchForm) }}
+
     </div>
-    <div class="row">
-        <p>{% trans with {'%search_term%': searchTerm, '%result_count%': results.getTotalItemCount} %}result info{% endtrans %}</p>
-    </div>
-    <div class="row">
-        <div class="result-list">
-        <ol start="{{ offset + 1}}">
+    {{ form_end(searchForm) }}
+
+    <p>{% trans with {'%search_term%': searchTerm, '%result_count%': results.getTotalItemCount} %}result
+        info{% endtrans %}</p>
+
+    <div class="result-list">
+        <ol start="{{ offset + 1 }}">
             {% for article in results %}
                 <li class="result-item">
-                    <a class="result-link" href="{{ path('_lemma', {'id': article.internal_id}) }}?q={{ searchTerm }}&start={{ loop.index }}">{{ article.lemma_normalized }} {% if article.type_of_word %}({{ article.type_of_word }}){% endif %}</a>
+                    <a class="result-link"
+                       href="{{ path('_lemma', {'id': article.internal_id}) }}?q={{ searchTerm }}&start={{ loop.index }}">{{ article.lemma_normalized }} {% if article.type_of_word %}({{ article.type_of_word }}){% endif %}</a>
                     <br>
-                    {{ attribute(highlightResults.results, article.id).fields.article_html.0 | striptags('<em>') | raw}}
+                    {{ attribute(highlightResults.results, article.id).fields.article_html.0 | striptags('<em>') | raw }}
                 </li>
             {% endfor %}
         </ol>
-    </div>
-        <aside>
-        <div class="facets">
-            <article class="facet">
-                <h1 class="facet-title">Wortart</h1>
-            <ul class="facet-list">
-                {% for facet, count in facets if count > 0 %}
-                    <li>{{ facet}} ({{ count }})</li>
-                {% endfor %}
-            </ul>
-            </article>
-        </div>
-        </aside>
     </div>
 
     <nav>
         {{ knp_pagination_render(results) }}
     </nav>
 
-    <div class="row">{% trans %}your last searchterms{% endtrans %}:
-        <div class="last-search"></div>
+    <p>{% trans %}your last searchterms{% endtrans %}: <span class="last-search"></span></p>
+
+{% endblock %}
+
+{% block sidebar %}
+    <div class="facets">
+        <article class="facet">
+            <h1 class="facet-title">Wortart</h1>
+            <ul class="facet-list">
+                {% for facet, count in facets if count > 0 %}
+                    <li>{{ facet }} ({{ count }})</li>
+                {% endfor %}
+            </ul>
+        </article>
     </div>
 {% endblock %}

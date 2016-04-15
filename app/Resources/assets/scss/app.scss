@@ -29,6 +29,12 @@ body {
 	}
 }
 
+.navbar-brand {
+	@include media-breakpoint-down(xs) {
+		font-size: $font-size-base;
+	}
+}
+
 .navbar-brand img {
 	border-radius: 80px;
 	background: $background-texture;
@@ -58,10 +64,6 @@ body {
 .type-of-word,
 .flex {
 	@extend .italic;
-}
-
-.article {
-	@extend .col-md-9;
 }
 
 .sidebar {
@@ -163,7 +165,6 @@ body {
 }
 
 .last-search {
-	display: inline-block;
 
 	ol {
 		margin-left: .25em;
@@ -191,8 +192,9 @@ ul {
 }
 
 .main-content {
+	@extend .col-md-9;
+
 	.result-list {
-		@extend .col-md-9;
 
 		em {
 			display: inline-block;

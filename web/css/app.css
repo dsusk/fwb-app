@@ -1044,7 +1044,7 @@ pre {
     padding-left: 15px;
     float: left;
     width: 66.66667%; }
-  .col-md-9, .article, .main-content .result-list {
+  .col-md-9, .main-content {
     position: relative;
     min-height: 1px;
     padding-right: 15px;
@@ -5904,6 +5904,10 @@ body {
   .navbar-fixed-top a {
     color: #fff; }
 
+@media (max-width: 543px) {
+  .navbar-brand {
+    font-size: 1rem; } }
+
 .navbar-brand img {
   border-radius: 80px;
   background: url("../images/body-bg.png");
@@ -5983,14 +5987,12 @@ body {
   padding-left: .5em;
   color: #373a3c; }
 
-.last-search {
-  display: inline-block; }
-  .last-search ol {
-    margin-left: .25em;
-    padding-left: 0; }
-    .last-search ol li {
-      display: inline-block;
-      margin-right: 1em; }
+.last-search ol {
+  margin-left: .25em;
+  padding-left: 0; }
+  .last-search ol li {
+    display: inline-block;
+    margin-right: 1em; }
 
 ul.pagination li {
   display: inline-block; }
