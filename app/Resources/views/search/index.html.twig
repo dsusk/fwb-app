@@ -21,15 +21,15 @@
         });
     </script>
 
-        {{ form_start(searchForm, { 'attr': {'class': 'form-inline'} }) }}
-        <div class="form-group row">
-
-            <div class="search-widget">
-                {{ form_widget(searchForm) }}
-            </div>
+    {{ form_start(searchForm, { 'attr': {'class': 'form-inline'} }) }}
+    <div class="form-group">
+        <div class="search-widget">
+            {{ form_widget(searchForm) }}
         </div>
-        {{ form_end(searchForm) }}
-    <div class="row">{% trans %}your last searchterms{% endtrans %}:
-        <div class="last-search"></div>
     </div>
+    {{ form_end(searchForm) }}
+
+    <p>{% trans %}your last searchterms{% endtrans %}:
+        <span class="last-search"></span>
+    </p>
 {% endblock %}
