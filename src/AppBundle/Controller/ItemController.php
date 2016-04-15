@@ -23,6 +23,7 @@ class ItemController extends Controller
         $searchTerm = 'internal_id:' . $id;
 
         $originalSearchTerm = $request->get('q');
+        $offset = (int)$request->get('start');
 
         $query = $client->createSelect();
         $query->setQuery($searchTerm);
@@ -36,17 +37,20 @@ class ItemController extends Controller
         return $this->render('item/detail.html.twig',
             [
                 'result' => $resultset->getDocuments()[0],
-                'documents' => $this->getResultsFor($originalSearchTerm),
+                'documents' => $this->getResultsFor($originalSearchTerm, $offset),
+                'offset' => $offset,
                 'searchTerm' => $originalSearchTerm
             ]);
     }
 
     /**
      * @param string $term
+     * @param int $offset
      * @return Result
      */
-    protected function getResultsFor($term)
+    protected function getResultsFor($term, $offset)
     {
+
         $client = $this->get('solarium.client');
         $solrSearchTerm = 'lemma:' . $term . '*';
         $query = $client->createSelect();
@@ -57,9 +61,23 @@ class ItemController extends Controller
         $fq->setKey('type');
         $fq->setQuery('type:artikel');
         $query->addFilterQuery($fq);
+        $query->setStart($this->getOffset($offset));
 
         return $client->select($query);
 
+    }
+
+    /**
+     * @param $offset
+     * @return int
+     */
+    protected function getOffset($offset)
+    {
+        if ($offset > 0) {
+            $offset = --$offset;
+        }
+
+        return $offset;
     }
 
 }

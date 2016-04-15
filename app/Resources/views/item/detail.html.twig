@@ -10,7 +10,7 @@
 
                 <ol class="result-list">
                     {% for document in documents %}
-                        <li><a class="result-link{% if document.internal_id == result.internal_id %} active{% endif %}" href="{{ path('_lemma', {'id': document.internal_id}) }}?q={{ searchTerm }}">{{ document.lemma_normalized }}</a></li>
+                        <li><a class="result-link{% if document.internal_id == result.internal_id %} active{% endif %}" href="{{ path('_lemma', {'id': document.internal_id}) }}?q={{ searchTerm }}&start={{ offset }}">{{ document.lemma_normalized }}</a></li>
                     {% endfor %}
                 </ol>
             </article>
