@@ -192,6 +192,8 @@ ul {
 
 .main-content {
 	.result-list {
+		@extend .col-md-9;
+
 		em {
 			display: inline-block;
 			box-shadow: inset -3px 2px 16px 0 $highlight-color;
@@ -204,5 +206,16 @@ ul {
 		.result-item {
 			margin-bottom: 1em;
 		}
+	}
+}
+
+.facet {
+	.facet-title {
+		font-size: $font-size-base;
+		font-weight: bold;
+	}
+
+	.facet-list {
+		list-style-type: none;
 	}
 }

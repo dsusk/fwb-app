@@ -109,6 +109,9 @@ class DefaultController extends Controller
         $fq->setQuery('type:artikel');
         $query->addFilterQuery($fq);
 
+        $facetSet = $query->getFacetSet();
+        $facetSet->createFacetField('type_of_word')->setField('type_of_word');
+
         $pagination = $paginator->paginate(
             [
                 $this->client,
@@ -118,10 +121,13 @@ class DefaultController extends Controller
             $rows
         );
 
+        $solrQuery = $this->client->select($query);
+
         return $this->render('search/results.html.twig', [
             'searchTerm' => $searchTerm,
-            'highlightResults' => $this->client->select($query)->getHighlighting(),
+            'highlightResults' => $solrQuery->getHighlighting(),
             'results' => $pagination,
+            'facets' => $solrQuery->getFacetSet()->getFacet('type_of_word'),
             'searchForm' => $form->createView(),
             'offset' => $offset
         ]);

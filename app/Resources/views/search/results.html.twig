@@ -38,11 +38,11 @@
         </div>
         {{ form_end(searchForm) }}
     </div>
-
     <div class="row">
         <p>{% trans with {'%search_term%': searchTerm, '%result_count%': results.getTotalItemCount} %}result info{% endtrans %}</p>
     </div>
-    <div class="row result-list">
+    <div class="row">
+        <div class="result-list">
         <ol start="{{ offset + 1}}">
             {% for article in results %}
                 <li class="result-item">
@@ -52,6 +52,19 @@
                 </li>
             {% endfor %}
         </ol>
+    </div>
+        <aside>
+        <div class="facets">
+            <article class="facet">
+                <h1 class="facet-title">Wortart</h1>
+            <ul class="facet-list">
+                {% for facet, count in facets if count > 0 %}
+                    <li>{{ facet}} ({{ count }})</li>
+                {% endfor %}
+            </ul>
+            </article>
+        </div>
+        </aside>
     </div>
 
     <nav>

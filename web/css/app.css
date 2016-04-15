@@ -1044,7 +1044,7 @@ pre {
     padding-left: 15px;
     float: left;
     width: 66.66667%; }
-  .col-md-9, .article {
+  .col-md-9, .article, .main-content .result-list {
     position: relative;
     min-height: 1px;
     padding-right: 15px;
@@ -6004,3 +6004,10 @@ ul.pagination li {
 
 .main-content .result-list .result-item {
   margin-bottom: 1em; }
+
+.facet .facet-title {
+  font-size: 1rem;
+  font-weight: bold; }
+
+.facet .facet-list {
+  list-style-type: none; }
