@@ -37,8 +37,7 @@
     </div>
     {{ form_end(searchForm) }}
 
-    <p>{% trans with {'%search_term%': searchTerm, '%result_count%': results.getTotalItemCount} %}result
-        info{% endtrans %}</p>
+    <p>{% trans with {'%search_term%': searchTerm, '%result_count%': results.getTotalItemCount} %}result info{% endtrans %}</p>
 
     <div class="result-list">
         <ol start="{{ offset + 1 }}">
