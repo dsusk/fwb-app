@@ -5,7 +5,6 @@ namespace AppBundle\Controller;
 use Solarium\Core\Query\Result\Result;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class SourceController extends Controller
@@ -30,7 +29,7 @@ class SourceController extends Controller
         /** @var Result $resultset */
         $resultset = $client->select($query);
         if ($resultset->getNumFound() <> 1) {
-            $message = 'source not found';
+            $message = $this->get('translator')->trans('source not found');
         } else {
             $message = $resultset->getDocuments()[0];
         }
