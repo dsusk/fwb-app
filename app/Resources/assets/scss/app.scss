@@ -15,6 +15,11 @@ $topbar-height: 55px;
 @import '../../../../node_modules/bootstrap/scss/bootstrap';
 @import 'jquery-ui';
 
+@font-face {
+   font-family: "Cardo";
+   src: url(../fonts/Cardo104s.ttf);
+ }
+
 body {
 	background: $background-texture;
 	padding-top: 5em;
@@ -105,6 +110,7 @@ body {
 .phras-begin {
 	@extend .card-title;
 
+	font-family: $font-family-sans-serif;
 	font-weight: bold;
 }
 
@@ -127,6 +133,7 @@ body {
 .synt {
 	text-indent: -1em;
 	margin-left: 1em;
+	font-family: Cardo, sans-serif;
 
 	.quote {
 		font-style: italic;

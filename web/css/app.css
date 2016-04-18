@@ -5894,6 +5894,10 @@ a.text-danger:focus, a.text-danger:hover {
   /* support: IE8 */
   border-radius: 8px; }
 
+@font-face {
+  font-family: "Cardo";
+  src: url(../fonts/Cardo104s.ttf); }
+
 body {
   background: url("../images/body-bg.png");
   padding-top: 5em; }
@@ -5956,6 +5960,7 @@ body {
 .ggs-begin,
 .stw-begin,
 .phras-begin {
+  font-family: "Open Sans", sans-serif;
   font-weight: bold; }
 
 .lemma {
@@ -5971,7 +5976,8 @@ body {
 .bdv,
 .synt {
   text-indent: -1em;
-  margin-left: 1em; }
+  margin-left: 1em;
+  font-family: Cardo, sans-serif; }
   .citation .quote,
   .bdv .quote,
   .synt .quote {

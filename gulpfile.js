@@ -9,6 +9,9 @@ var config = {
         sass: [
             'app/Resources/assets/scss/**/*.scss'
         ],
+        fonts: [
+            'app/Resources/assets/fonts/**/*.ttf'
+        ],
         javascript: [
             'node_modules/jquery/dist/jquery.min.js'
         ]
@@ -39,7 +42,7 @@ gulp.task('sass-lint', function () {
         }));
 });
 
-gulp.task('compile', ['sass', 'jquery'], function() {});
+gulp.task('compile', ['sass', 'jquery', 'fonts'], function() {});
 
 gulp.task('sass', function() {
     gulp.src('app/Resources/assets/scss/**/*.scss')
@@ -56,5 +59,11 @@ gulp.task('jquery', function() {
     gulp.src(config.paths.javascript)
         .pipe(gulp.dest('web/js'));
 });
+
+gulp.task('fonts', function() {
+    gulp.src(config.paths.fonts)
+        .pipe(gulp.dest('web/fonts'));
+});
+
 
 gulp.task('default', ['compile', 'watch']);

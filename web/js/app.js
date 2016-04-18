@@ -1,5 +1,5 @@
 WebFontConfig = {
-    google: {families: ['Cardo:400,400italic,700:latin']}
+    google: {families: ['Open Sans:400,400italic,700:latin']}
 };
 (function () {
     var wf = document.createElement('script');
