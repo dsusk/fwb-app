@@ -2540,16 +2540,16 @@
         },
         {
             "name": "liip/functional-test-bundle",
-            "version": "1.6.1",
+            "version": "1.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipFunctionalTestBundle.git",
-                "reference": "23a229daa3a4880a6fd659a24d64639427ed1e7d"
+                "reference": "7401da84b3da42cbde1fab51f26503ae9d6b8f02"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/23a229daa3a4880a6fd659a24d64639427ed1e7d",
-                "reference": "23a229daa3a4880a6fd659a24d64639427ed1e7d",
+                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/7401da84b3da42cbde1fab51f26503ae9d6b8f02",
+                "reference": "7401da84b3da42cbde1fab51f26503ae9d6b8f02",
                 "shasum": ""
             },
             "require": {
@@ -2611,7 +2611,7 @@
             "keywords": [
                 "Symfony2"
             ],
-            "time": "2016-04-09 16:28:17"
+            "time": "2016-04-15 09:58:44"
         },
         {
             "name": "sensio/generator-bundle",
