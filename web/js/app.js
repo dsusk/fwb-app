@@ -16,4 +16,16 @@ $(function () {
         source: '/autocomplete',
         minLength: 2
     });
+
+    $('.citation-source_link').click(function (e) {
+        e.preventDefault();
+        var citationBlock = $(this).parent('.citation').children('.source-detail-info');
+        citationBlock.toggle();
+
+        $.get($(this).attr('href'), function (data) {
+            citationBlock.html(data);
+        });
+
+
+    });
 });

@@ -6020,3 +6020,6 @@ ul.pagination li {
 .facet .facet-list {
   list-style-type: none;
   padding-left: 0; }
+
+.source-detail-info {
+  display: none; }
