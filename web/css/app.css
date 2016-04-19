@@ -6023,3 +6023,15 @@ ul.pagination li {
 
 .source-detail-info {
   display: none; }
+
+.source-details {
+  display: table;
+  text-indent: 0; }
+
+.source-details-row {
+  display: table-row; }
+  .source-details-row .column-left,
+  .source-details-row .column-right {
+    display: table-cell; }
+  .source-details-row .column-left {
+    padding-right: 1em; }

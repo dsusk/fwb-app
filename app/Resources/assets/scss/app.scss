@@ -232,3 +232,21 @@ ul {
 .source-detail-info {
 	display: none;
 }
+
+.source-details {
+	display: table;
+	text-indent: 0;
+}
+
+.source-details-row {
+	display: table-row;
+
+	.column-left,
+	.column-right {
+		display: table-cell;
+	}
+
+	.column-left {
+		padding-right: 1em;
+	}
+}
