@@ -19,13 +19,17 @@ $(function () {
 
     $('.citation-source_link').click(function (e) {
         e.preventDefault();
-        var citationBlock = $(this).parent('.citation').children('.source-detail-info');
-        citationBlock.toggle();
+        var that = $(this);
 
-        $.get($(this).attr('href'), function (data) {
-            citationBlock.html(data);
+        $.get(that.attr('href'), function (data) {
+            that.popover({
+                content: data,
+                html: true,
+                trigger: 'focus',
+                container: 'body',
+                title: that.text()
+            }).popover('toggle');
         });
-
 
     });
 });

@@ -2,6 +2,7 @@ var gulp = require('gulp'),
     scsslint = require('gulp-scss-lint'),
     postcss = require('gulp-postcss'),
     cached = require('gulp-cached'),
+    concat = require('gulp-concat'),
     sass = require('gulp-sass');
 
 var config = {
@@ -13,7 +14,10 @@ var config = {
             'app/Resources/assets/fonts/**/*.ttf'
         ],
         javascript: [
-            'node_modules/jquery/dist/jquery.min.js'
+            'node_modules/jquery/dist/jquery.min.js',
+            'web/js/jquery-ui.min.js',
+            'node_modules/tether/dist/js/tether.min.js',
+            'node_modules/bootstrap/dist/js/bootstrap.min.js'
         ]
     },
     autoprefixer: {
@@ -57,6 +61,7 @@ gulp.task('watch', function () {
 
 gulp.task('jquery', function() {
     gulp.src(config.paths.javascript)
+        .pipe(concat('scripts.js'))
         .pipe(gulp.dest('web/js'));
 });
 

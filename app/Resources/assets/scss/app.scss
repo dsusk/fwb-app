@@ -230,16 +230,25 @@ ul {
 }
 
 .source-detail-info {
+	@extend .card;
+	@extend .card-block;
+
 	display: none;
 }
 
 .source-details {
+	@extend .card-text;
+
 	display: table;
 	text-indent: 0;
 }
 
 .source-details-row {
 	display: table-row;
+
+	a {
+		@extend .card-link;
+	}
 
 	.column-left,
 	.column-right {
