@@ -25,7 +25,6 @@ $(function () {
             that.popover({
                 content: data,
                 html: true,
-                trigger: 'focus',
                 container: 'body',
                 title: that.text()
             }).popover('toggle');
