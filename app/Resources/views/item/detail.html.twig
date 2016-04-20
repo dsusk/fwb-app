@@ -7,6 +7,20 @@
 {% endblock %}
 
 {% block sidebar %}
+
+    {% if definitionIndex | length > 1 %}
+        <article class="index">
+            <h1>Bedeutungsindex</h1>
+            <ol class="index-list">
+                {% for definition in definitionIndex %}
+                    <li class="index-list-item"><span class="label label-default label-pill">{{ loop.index }}.</span>
+                        <a href="#sense{{ loop.index }}">{{ definition.definition_fulltext | truncate(80, true, "‹") }}</a>
+                    </li>
+                {% endfor %}
+            </ol>
+        </article>
+    {% endif %}
+
     {% if searchTerm %}
         <article class="results">
             <h1>{% trans with {'%search_term%': searchTerm} %}results for{% endtrans %}</h1>

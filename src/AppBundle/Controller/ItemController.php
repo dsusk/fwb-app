@@ -37,10 +37,25 @@ class ItemController extends Controller
         return $this->render('item/detail.html.twig',
             [
                 'result' => $resultset->getDocuments()[0],
+                'definitionIndex' => $this->getDefinitionIndex($resultset->getDocuments()[0]['id']),
                 'documents' => $this->getResultsFor($originalSearchTerm, $offset),
                 'offset' => $offset,
                 'searchTerm' => $originalSearchTerm
             ]);
+    }
+
+    /**
+     * @param string $documentId
+     * @return Result
+     */
+    protected function getDefinitionIndex($documentId)
+    {
+        $client = $this->get('solarium.client');
+        $solrSearchTerm = 'ref_id:' . $documentId . '*';
+        $query = $client->createSelect();
+        $query->setQuery($solrSearchTerm);
+
+        return $client->select($query);
     }
 
     /**

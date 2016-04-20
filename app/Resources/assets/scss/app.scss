@@ -73,7 +73,8 @@ body {
 .sidebar {
 	@extend .col-md-3;
 
-	.results {
+	.results,
+	.index {
 		@extend .card-block;
 
 		h1 {
@@ -262,4 +263,22 @@ ul {
 
 .popover {
 	max-width: 40em;
+}
+
+.sidebar {
+
+	.index-list {
+		@extend .list-group;
+
+		padding-left: 0;
+		margin-left: 0;
+
+		li {
+			@extend .list-group-item;
+		}
+	}
+
+	.index-list-item {
+		font-size: .8em;
+	}
 }

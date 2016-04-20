@@ -3152,7 +3152,8 @@ input[type="button"].btn-block {
   border-radius: 0.25rem;
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.125); }
 
-.card-block, .sidebar .results, .synt,
+.card-block, .sidebar .results,
+.sidebar .index, .synt,
 .citations,
 .bls,
 .bdv,
@@ -3163,7 +3164,8 @@ input[type="button"].btn-block {
 .dict-ref,
 .subvoce, .source-detail-info {
   padding: 1.25rem; }
-  .card-block::after, .sidebar .results::after, .synt::after,
+  .card-block::after, .sidebar .results::after,
+  .sidebar .index::after, .synt::after,
   .citations::after,
   .bls::after,
   .bdv::after,
@@ -3177,7 +3179,8 @@ input[type="button"].btn-block {
     display: table;
     clear: both; }
 
-.card-title, .sidebar .results h1, .citations-begin,
+.card-title, .sidebar .results h1,
+.sidebar .index h1, .citations-begin,
 .lemma,
 .synt-begin,
 .bls-begin,
@@ -3201,11 +3204,11 @@ input[type="button"].btn-block {
 .card-link + .card-link, .source-details-row a + .card-link, .source-details-row .card-link + a, .source-details-row a + a {
   margin-left: 1.25rem; }
 
-.card > .list-group:first-child .list-group-item:first-child, .sense > .list-group:first-child .list-group-item:first-child, .source-detail-info > .list-group:first-child .list-group-item:first-child {
+.card > .list-group:first-child .list-group-item:first-child, .sense > .list-group:first-child .list-group-item:first-child, .source-detail-info > .list-group:first-child .list-group-item:first-child, .sidebar .card > .index-list:first-child .list-group-item:first-child, .sidebar .sense > .index-list:first-child .list-group-item:first-child, .sidebar .source-detail-info > .index-list:first-child .list-group-item:first-child, .card > .list-group:first-child .sidebar .index-list li:first-child, .sidebar .index-list .card > .list-group:first-child li:first-child, .sense > .list-group:first-child .sidebar .index-list li:first-child, .sidebar .index-list .sense > .list-group:first-child li:first-child, .source-detail-info > .list-group:first-child .sidebar .index-list li:first-child, .sidebar .index-list .source-detail-info > .list-group:first-child li:first-child, .sidebar .card > .index-list:first-child li:first-child, .sidebar .sense > .index-list:first-child li:first-child, .sidebar .source-detail-info > .index-list:first-child li:first-child {
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem; }
 
-.card > .list-group:last-child .list-group-item:last-child, .sense > .list-group:last-child .list-group-item:last-child, .source-detail-info > .list-group:last-child .list-group-item:last-child {
+.card > .list-group:last-child .list-group-item:last-child, .sense > .list-group:last-child .list-group-item:last-child, .source-detail-info > .list-group:last-child .list-group-item:last-child, .sidebar .card > .index-list:last-child .list-group-item:last-child, .sidebar .sense > .index-list:last-child .list-group-item:last-child, .sidebar .source-detail-info > .index-list:last-child .list-group-item:last-child, .card > .list-group:last-child .sidebar .index-list li:last-child, .sidebar .index-list .card > .list-group:last-child li:last-child, .sense > .list-group:last-child .sidebar .index-list li:last-child, .sidebar .index-list .sense > .list-group:last-child li:last-child, .source-detail-info > .list-group:last-child .sidebar .index-list li:last-child, .sidebar .index-list .source-detail-info > .list-group:last-child li:last-child, .sidebar .card > .index-list:last-child li:last-child, .sidebar .sense > .index-list:last-child li:last-child, .sidebar .source-detail-info > .index-list:last-child li:last-child {
   border-bottom-right-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem; }
 
@@ -3295,6 +3298,10 @@ input[type="button"].btn-block {
 .card-inverse .card-footer,
 .card-inverse .card-title,
 .card-inverse .sidebar .results h1, .sidebar .results
+.card-inverse h1,
+.card-inverse
+.sidebar .index h1,
+.sidebar .index
 .card-inverse h1,
 .card-inverse .citations-begin,
 .card-inverse
@@ -3874,50 +3881,50 @@ base::-moz-progress-bar,
   padding-left: 0;
   list-style: none; }
 
-.list-group {
+.list-group, .sidebar .index-list {
   padding-left: 0;
   margin-bottom: 0; }
 
-.list-group-item {
+.list-group-item, .sidebar .index-list li {
   position: relative;
   display: block;
   padding: 0.75rem 1.25rem;
   margin-bottom: -1px;
   background-color: #fff;
   border: 1px solid #ddd; }
-  .list-group-item:first-child {
+  .list-group-item:first-child, .sidebar .index-list li:first-child {
     border-top-right-radius: 0.25rem;
     border-top-left-radius: 0.25rem; }
-  .list-group-item:last-child {
+  .list-group-item:last-child, .sidebar .index-list li:last-child {
     margin-bottom: 0;
     border-bottom-right-radius: 0.25rem;
     border-bottom-left-radius: 0.25rem; }
-  .list-group-item.disabled, .list-group-item.disabled:focus, .list-group-item.disabled:hover {
+  .list-group-item.disabled, .sidebar .index-list li.disabled, .list-group-item.disabled:focus, .sidebar .index-list li.disabled:focus, .list-group-item.disabled:hover, .sidebar .index-list li.disabled:hover {
     color: #818a91;
     cursor: not-allowed;
     background-color: #eceeef; }
-    .list-group-item.disabled .list-group-item-heading, .list-group-item.disabled:focus .list-group-item-heading, .list-group-item.disabled:hover .list-group-item-heading {
+    .list-group-item.disabled .list-group-item-heading, .sidebar .index-list li.disabled .list-group-item-heading, .list-group-item.disabled:focus .list-group-item-heading, .sidebar .index-list li.disabled:focus .list-group-item-heading, .list-group-item.disabled:hover .list-group-item-heading, .sidebar .index-list li.disabled:hover .list-group-item-heading {
       color: inherit; }
-    .list-group-item.disabled .list-group-item-text, .list-group-item.disabled:focus .list-group-item-text, .list-group-item.disabled:hover .list-group-item-text {
+    .list-group-item.disabled .list-group-item-text, .sidebar .index-list li.disabled .list-group-item-text, .list-group-item.disabled:focus .list-group-item-text, .sidebar .index-list li.disabled:focus .list-group-item-text, .list-group-item.disabled:hover .list-group-item-text, .sidebar .index-list li.disabled:hover .list-group-item-text {
       color: #818a91; }
-  .list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+  .list-group-item.active, .sidebar .index-list li.active, .list-group-item.active:focus, .sidebar .index-list li.active:focus, .list-group-item.active:hover, .sidebar .index-list li.active:hover {
     z-index: 2;
     color: #fff;
     text-decoration: none;
     background-color: #c90230;
     border-color: #c90230; }
-    .list-group-item.active .list-group-item-heading,
-    .list-group-item.active .list-group-item-heading > small,
-    .list-group-item.active .list-group-item-heading > .small, .list-group-item.active:focus .list-group-item-heading,
-    .list-group-item.active:focus .list-group-item-heading > small,
-    .list-group-item.active:focus .list-group-item-heading > .small, .list-group-item.active:hover .list-group-item-heading,
-    .list-group-item.active:hover .list-group-item-heading > small,
-    .list-group-item.active:hover .list-group-item-heading > .small {
+    .list-group-item.active .list-group-item-heading, .sidebar .index-list li.active .list-group-item-heading,
+    .list-group-item.active .list-group-item-heading > small, .sidebar .index-list li.active .list-group-item-heading > small,
+    .list-group-item.active .list-group-item-heading > .small, .sidebar .index-list li.active .list-group-item-heading > .small, .list-group-item.active:focus .list-group-item-heading, .sidebar .index-list li.active:focus .list-group-item-heading,
+    .list-group-item.active:focus .list-group-item-heading > small, .sidebar .index-list li.active:focus .list-group-item-heading > small,
+    .list-group-item.active:focus .list-group-item-heading > .small, .sidebar .index-list li.active:focus .list-group-item-heading > .small, .list-group-item.active:hover .list-group-item-heading, .sidebar .index-list li.active:hover .list-group-item-heading,
+    .list-group-item.active:hover .list-group-item-heading > small, .sidebar .index-list li.active:hover .list-group-item-heading > small,
+    .list-group-item.active:hover .list-group-item-heading > .small, .sidebar .index-list li.active:hover .list-group-item-heading > .small {
       color: inherit; }
-    .list-group-item.active .list-group-item-text, .list-group-item.active:focus .list-group-item-text, .list-group-item.active:hover .list-group-item-text {
+    .list-group-item.active .list-group-item-text, .sidebar .index-list li.active .list-group-item-text, .list-group-item.active:focus .list-group-item-text, .sidebar .index-list li.active:focus .list-group-item-text, .list-group-item.active:hover .list-group-item-text, .sidebar .index-list li.active:hover .list-group-item-text {
       color: #fe99b0; }
 
-.list-group-flush .list-group-item {
+.list-group-flush .list-group-item, .list-group-flush .sidebar .index-list li, .sidebar .index-list .list-group-flush li {
   border-radius: 0; }
 
 .list-group-item-action {
@@ -5941,16 +5948,20 @@ body {
 .neblem {
   font-weight: bold; }
 
-.sidebar .results h1 {
+.sidebar .results h1,
+.sidebar .index h1 {
   font-size: 1rem;
   font-weight: bold; }
 
-.sidebar .results .result-list {
+.sidebar .results .result-list,
+.sidebar .index .result-list {
   padding-left: 0;
   list-style: none; }
-  .sidebar .results .result-list .result-link {
+  .sidebar .results .result-list .result-link,
+  .sidebar .index .result-list .result-link {
     font-weight: normal; }
-    .sidebar .results .result-list .result-link.active {
+    .sidebar .results .result-list .result-link.active,
+    .sidebar .index .result-list .result-link.active {
       font-weight: bold; }
 
 .citations-begin,
@@ -6040,3 +6051,10 @@ ul.pagination li {
 
 .popover {
   max-width: 40em; }
+
+.sidebar .index-list {
+  padding-left: 0;
+  margin-left: 0; }
+
+.sidebar .index-list-item {
+  font-size: .8em; }
