@@ -31,7 +31,7 @@ class ItemController extends Controller
         /** @var Result $resultset */
         $resultset = $client->select($query);
         if ($resultset->getNumFound() <> 1) {
-            return $this->redirectToRoute('search', ['q' => $id], 301);
+            return $this->redirectToRoute('search', ['q' => $id, 'type' => 'ref'], 301);
         }
 
         return $this->render('item/detail.html.twig',

@@ -80,8 +80,13 @@ class DefaultController extends Controller
 
         $searchTerm = $form->get('q')->getNormData();
 
-        $solrSearchTerm = 'lemma:' . $searchTerm . '*';
+        $requestType = $request->get('type');
 
+        if ($requestType === 'ref') {
+            $solrSearchTerm = 'internal_id:' . $searchTerm . '*';
+        } else {
+            $solrSearchTerm = 'lemma:' . $searchTerm . '*';
+        }
         $paginator = $this->get('knp_paginator');
 
         // todo move into config
