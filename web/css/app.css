@@ -6037,3 +6037,6 @@ ul.pagination li {
     display: table-cell; }
   .source-details-row .column-left {
     padding-right: 1em; }
+
+.popover {
+  max-width: 40em; }
