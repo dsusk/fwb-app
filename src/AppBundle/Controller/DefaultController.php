@@ -150,7 +150,7 @@ class DefaultController extends Controller
         $query = $client->createSuggester();
         $query->setQuery($request->get('term'));
         $query->setDictionary('suggest');
-        $query->setOnlyMorePopular(true);
+
         $query->setCount(10);
         $query->setCollate(true);
 
