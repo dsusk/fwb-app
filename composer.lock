@@ -986,16 +986,16 @@
         },
         {
             "name": "knplabs/knp-paginator-bundle",
-            "version": "2.5.2",
+            "version": "2.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/KnpPaginatorBundle.git",
-                "reference": "2e669429175eb86c4c2524cd6eb55f0ec88bf7d4"
+                "reference": "c988761005504007c6c87d6a557641281194a0e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/KnpPaginatorBundle/zipball/2e669429175eb86c4c2524cd6eb55f0ec88bf7d4",
-                "reference": "2e669429175eb86c4c2524cd6eb55f0ec88bf7d4",
+                "url": "https://api.github.com/repos/KnpLabs/KnpPaginatorBundle/zipball/c988761005504007c6c87d6a557641281194a0e5",
+                "reference": "c988761005504007c6c87d6a557641281194a0e5",
                 "shasum": ""
             },
             "require": {
@@ -1043,7 +1043,7 @@
                 "pagination",
                 "paginator"
             ],
-            "time": "2016-04-20 10:15:45"
+            "time": "2016-04-20 11:40:30"
         },
         {
             "name": "kriswallsmith/assetic",
