@@ -53,7 +53,7 @@ class ItemController extends Controller
         $client = $this->get('solarium.client');
         $solrSearchTerm = 'ref_id:' . $documentId . ' AND type:bedeutung';
         $query = $client->createSelect();
-        $query->addSort('id', $query::SORT_ASC);
+        $query->addSort('sense_number', $query::SORT_ASC);
         $query->setQuery($solrSearchTerm);
 
         return $client->select($query)->getDocuments();
