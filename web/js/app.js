@@ -21,14 +21,11 @@ $(function () {
         e.preventDefault();
         var that = $(this);
 
-        $.get(that.attr('href'), function (data) {
-            that.popover({
-                content: data,
-                html: true,
-                container: 'body',
-                title: that.text()
-            }).popover('toggle');
-        });
+        $.get(that.attr('href'), function(data) {
+            $('.modal-body').html(data);
+            $('.modal-title').text(that.text())
+            $('.modal').modal('toggle');
+        })
 
     });
 });

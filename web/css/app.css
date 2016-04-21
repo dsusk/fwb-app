@@ -6049,8 +6049,8 @@ ul.pagination li {
   .source-details-row .column-left {
     padding-right: 1em; }
 
-.popover {
-  max-width: 40em; }
+#modal {
+  display: none; }
 
 .sidebar .index-list {
   padding-left: 0;
