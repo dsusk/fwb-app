@@ -20,6 +20,8 @@ class ItemController extends Controller
     {
 
         $client = $this->get('solarium.client');
+        $paginator = $this->get('knp_paginator');
+
         $searchTerm = 'internal_id:' . $id;
 
         $originalSearchTerm = $request->get('q');
@@ -33,14 +35,26 @@ class ItemController extends Controller
         if ($resultset->getNumFound() <> 1) {
             return $this->redirectToRoute('search', ['q' => $id, 'type' => 'ref'], 301);
         }
+        $currentPage = (int)$request->get('page') ?: 1;
+        $rows = 20;
+
+        $pagination = $paginator->paginate(
+            [
+                $client,
+                $this->getResultsFor($originalSearchTerm, $offset)
+            ],
+            $currentPage,
+            $rows
+        );
 
         return $this->render('item/detail.html.twig',
             [
                 'result' => $resultset->getDocuments()[0],
                 'definitionIndex' => $this->getDefinitionIndex($resultset->getDocuments()[0]['id']),
-                'documents' => $this->getResultsFor($originalSearchTerm, $offset),
+                'documents' => $pagination,
                 'offset' => $offset,
-                'searchTerm' => $originalSearchTerm
+                'searchTerm' => $originalSearchTerm,
+                'currentPage' => $currentPage
             ]);
     }
 
@@ -80,7 +94,7 @@ class ItemController extends Controller
         $query->addFilterQuery($fq);
         $query->setStart($this->getOffset($offset));
 
-        return $client->select($query);
+        return $query;
 
     }
 

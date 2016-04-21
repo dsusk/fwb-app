@@ -134,7 +134,8 @@ class DefaultController extends Controller
             'results' => $pagination,
             'facets' => $solrQuery->getFacetSet()->getFacet('type_of_word'),
             'searchForm' => $form->createView(),
-            'offset' => $offset
+            'offset' => $offset,
+            'currentPage' => $currentPage
         ]);
 
     }
