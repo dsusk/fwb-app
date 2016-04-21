@@ -51,12 +51,12 @@ class ItemController extends Controller
     protected function getDefinitionIndex($documentId)
     {
         $client = $this->get('solarium.client');
-        $solrSearchTerm = 'ref_id:' . $documentId . '*';
+        $solrSearchTerm = 'ref_id:' . $documentId . ' AND type:bedeutung';
         $query = $client->createSelect();
         $query->addSort('id', $query::SORT_ASC);
         $query->setQuery($solrSearchTerm);
 
-        return $client->select($query);
+        return $client->select($query)->getDocuments();
     }
 
     /**
