@@ -54,6 +54,7 @@ class ItemController extends Controller
         $solrSearchTerm = 'ref_id:' . $documentId . ' AND type:bedeutung';
         $query = $client->createSelect();
         $query->addSort('sense_number', $query::SORT_ASC);
+        $query->setRows(50);
         $query->setQuery($solrSearchTerm);
 
         return $client->select($query)->getDocuments();
