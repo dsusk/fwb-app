@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use Knp\Component\Pager\Pagination\PaginationInterface;
 use Solarium\Core\Query\Result\Result;
 use Solarium\QueryType\Select\Query\FilterQuery;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -38,6 +39,7 @@ class ItemController extends Controller
         $currentPage = (int)$request->get('page') ?: 1;
         $rows = 20;
 
+        /** @var PaginationInterface $pagination */
         $pagination = $paginator->paginate(
             [
                 $client,
@@ -46,6 +48,8 @@ class ItemController extends Controller
             $currentPage,
             $rows
         );
+
+        $pagination->setPageRange(1);
 
         return $this->render('item/detail.html.twig',
             [
