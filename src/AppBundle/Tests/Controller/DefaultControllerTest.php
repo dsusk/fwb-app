@@ -38,7 +38,10 @@ class DefaultControllerTest extends WebTestCase
             ['/search?q=imbis'],
             ['/lemma/imbis.s.*'],
             ['/lemma/imbis.s.0m'],
-            ['/lemma/imbis.s.0m?q=imbis']
+            ['/lemma/imbis.s.0m?q=imbis'],
+            ['/lemma/imbis.s.0m?q=imbis&start=1'],
+            ['/lemma/imbis.s.0m?start=1'],
+            ['/source/source_5'],
         ];
     }
 }
