@@ -26,7 +26,7 @@ class ItemController extends Controller
         $searchTerm = 'internal_id:' . $id;
 
         $originalSearchTerm = $request->get('q');
-        $offset = (int)$request->get('start');
+        $offset = (int)$request->get('page');
 
         $query = $client->createSelect();
         $query->setQuery($searchTerm);
@@ -39,6 +39,8 @@ class ItemController extends Controller
         $currentPage = (int)$request->get('page') ?: 1;
         $rows = 20;
 
+        $counter = $currentPage * $rows -$rows +1;
+
         /** @var PaginationInterface $pagination */
         $pagination = $paginator->paginate(
             [
@@ -50,6 +52,8 @@ class ItemController extends Controller
         );
 
         $pagination->setPageRange(1);
+        $pagination->setTemplate('Pagination/sidebar.html.twig');
+
 
         return $this->render('item/detail.html.twig',
             [
@@ -58,7 +62,8 @@ class ItemController extends Controller
                 'documents' => $pagination,
                 'offset' => $offset,
                 'searchTerm' => $originalSearchTerm,
-                'currentPage' => $currentPage
+                'currentPage' => $currentPage,
+                'counter' => $counter,
             ]);
     }
 

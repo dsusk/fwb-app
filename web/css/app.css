@@ -5956,7 +5956,7 @@ body {
 .sidebar .results .result-list,
 .sidebar .index .result-list {
   padding-left: 0;
-  list-style: none; }
+  list-style-position: inside; }
   .sidebar .results .result-list .result-link,
   .sidebar .index .result-list .result-link {
     font-weight: normal; }

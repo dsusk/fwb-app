@@ -40,15 +40,15 @@
         <article class="results">
             <h1>{% trans with {'%search_term%': searchTerm} %}results for{% endtrans %}</h1>
 
-            <ol class="result-list">
+            <ol class="result-list" start="{{ counter }}">
                 {% for document in documents %}
                     <li><a class="result-link{% if document.internal_id == result.internal_id %} active{% endif %}"
                            href="{{ path('_lemma', {'id': document.internal_id}) }}?q={{ searchTerm }}&page={{ currentPage }}">{{ document.lemma_normalized }}</a>
                     </li>
                 {% endfor %}
             </ol>
-        </article>
-        {{ knp_pagination_render(documents) }}
+            {{ knp_pagination_render(documents) }}
 
+        </article>
     {% endif %}
 {% endblock %}

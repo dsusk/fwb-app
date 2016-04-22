@@ -14,7 +14,7 @@
             var lastSearchesInfo = '<ol>';
 
             $(lastSearches).each(function (id, text) {
-                lastSearchesInfo += '<li><a href="/search?q=' + text + '">' + text + '</a></li>';
+                lastSearchesInfo += '<li><a href="{{ path('search') }}?q=' + text + '">' + text + '</a></li>';
             });
 
             $('.last-search').html(lastSearchesInfo);
