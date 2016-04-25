@@ -14,6 +14,7 @@ class ItemController extends Controller
 
     /**
      * @Route("/lemma/{id}", name="_lemma")
+     * @param Request $request
      * @param string $id
      * @return string
      */

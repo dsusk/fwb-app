@@ -72,8 +72,6 @@ assetic:
     use_controller: '%kernel.debug%'
     filters:
         cssrewrite: ~
-        scssphp:
-            formatter: 'Leafo\ScssPhp\Formatter\Compressed'
 
 knp_paginator:
     template:
