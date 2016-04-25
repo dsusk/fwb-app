@@ -1,5 +1,6 @@
 app name: Frühneuhochdeutsches Wörterbuch
 search: Search
+full-text: full text
 dictionary search: Dictionary Search
 your last searchterms: Your last searchterms
 result info: Searching for »%search_term%« got %result_count% hits

@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Solarium\QueryType\Select\Query\FilterQuery;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SearchType;
@@ -59,9 +60,13 @@ class DefaultController extends Controller
                     'class' => 'sr-only'
                 ]
             ])
-           ->add('page', HiddenType::class)
-           ->add('type', HiddenType::class)
-           ->add('search', SubmitType::class, [
+            ->add('full-text', CheckboxType::class, [
+                'label' => $this->get('translator')->trans('full-text'),
+                'required' => false,
+            ])
+            ->add('page', HiddenType::class)
+            ->add('type', HiddenType::class)
+            ->add('search', SubmitType::class, [
                 'label' => $this->get('translator')->trans('search'),
             ])
             ->setMethod('GET')
@@ -95,7 +100,12 @@ class DefaultController extends Controller
         if ($requestType === 'ref') {
             $solrSearchTerm = 'internal_id:' . $searchTerm . '*';
         } else {
-            $solrSearchTerm = 'lemma:' . $searchTerm . '*';
+            $searchBuilder = [];
+            $searchBuilder[] = 'lemma:' . $searchTerm . '*';
+            if ($form->has('full-text')) {
+                $searchBuilder[] = 'article_html:' . $searchTerm . '*';
+            }
+            $solrSearchTerm = implode(' OR ', $searchBuilder);
         }
         $paginator = $this->get('knp_paginator');
 
