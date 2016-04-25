@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Solarium\QueryType\Select\Query\FilterQuery;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilder;
@@ -41,7 +42,14 @@ class DefaultController extends Controller
         /** @var FormBuilder $form */
         $form = $this
             ->get('form.factory')
-            ->createNamedBuilder('', FormType::class, [], ['csrf_protection' => false])
+            ->createNamedBuilder(
+                null,
+                FormType::class,
+                [],
+                [
+                    'csrf_protection' => false
+                ]
+            )
             ->add('q', SearchType::class, [
                 'attr' => [
                     'placeholder' => $this->get('translator')->trans('dictionary search'),
@@ -51,7 +59,8 @@ class DefaultController extends Controller
                     'class' => 'sr-only'
                 ]
             ])
-            ->add('search', SubmitType::class, [
+           ->add('page', HiddenType::class)
+           ->add('search', SubmitType::class, [
                 'label' => $this->get('translator')->trans('search'),
             ])
             ->setMethod('GET')
