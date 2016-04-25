@@ -60,6 +60,7 @@ class DefaultController extends Controller
                 ]
             ])
            ->add('page', HiddenType::class)
+           ->add('type', HiddenType::class)
            ->add('search', SubmitType::class, [
                 'label' => $this->get('translator')->trans('search'),
             ])
