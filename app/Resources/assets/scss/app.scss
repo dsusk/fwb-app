@@ -21,10 +21,9 @@ $topbar-height: 55px;
 
 body {
 	background: $background-texture;
-	padding-top: 5em;
 }
 
-.navbar-fixed-top {
+.navbar {
 	background-color: $navbar-default-bg;
 	height: $topbar-height;
 
@@ -55,6 +54,8 @@ body {
 
 .main-content {
 	@include make-row();
+
+	margin-top: 2em;
 }
 
 .italic {
@@ -72,6 +73,8 @@ body {
 
 .sidebar {
 	@extend .col-md-3;
+
+	margin-top: 2em;
 
 	.results,
 	.index {
