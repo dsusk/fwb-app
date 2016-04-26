@@ -17,7 +17,7 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
-    solr_host: solr.sub.uni-goettingen.de
+    solr_host: adw-dev.tc.sub.uni-goettingen.de
     solr_port: 80
     solr_path: /solr
     solr_core: fwb
